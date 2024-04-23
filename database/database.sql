@@ -11,6 +11,22 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    `City` (
+        `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        `Name` VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
+    `BranchDetails` (
+        `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        `CityId` INT NOT NULL,
+        `Address` VARCHAR(255) NOT NULL,
+        `Squrfeet` INT NOT NULL,
+        `OwnerName` VARCHAR(255) NOT NULL,
+        FOREIGN KEY (`CityId`) REFERENCES `City` (`Id`)
+    );
+
+CREATE TABLE
     `Users` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `RoleId` INT NOT NULL,
@@ -19,6 +35,22 @@ CREATE TABLE
         `Email` VARCHAR(255) NOT NULL,
         `Address` VARCHAR(255) NOT NULL,
         FOREIGN KEY (`RoleId`) REFERENCES `Roles` (`Id`)
+    );
+
+CREATE TABLE
+    `Modules` (
+        `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        `Name` VARCHAR(255) NOT NULL
+    );
+
+CREATE TABLE
+    `Permissions` (
+        `UserId` INT NOT NULL,
+        `ModuleId` INT NOT NULL,
+        `BranchId` INT NOT NULL,
+        FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`),
+        FOREIGN KEY (`ModuleId`) REFERENCES `Modules` (`Id`),
+        FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`)
     );
 
 CREATE TABLE
@@ -31,45 +63,50 @@ CREATE TABLE
     `Products` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `CategoryId` INT NOT NULL,
-        `Price` INT NOT NULL,
         `Name` VARCHAR(255) NOT NULL,
         `Details` VARCHAR(255) NOT NULL,
+        `Price` INT NOT NULL,
+        `ImageFileName` VARCHAR(255) NOT NULL,
         FOREIGN KEY (`CategoryId`) REFERENCES `Categories` (`Id`)
     );
 
 CREATE TABLE
-    `ProductImages` (
+    `Stocks` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        `BranchId` INT NOT NULL,
         `ProductId` INT NOT NULL,
-        `ImageName` VARCHAR(255) NOT NULL,
-        FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`)
+        `CurrentQuantity` INT NOT NULL,
+        FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`)
     );
 
 CREATE TABLE
-    `Orders` (
+    `Purchase` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        `UserId` INT NOT NULL,
+        `BranchId` INT NOT NULL,
         `ProductId` INT NOT NULL,
         `Quantity` INT NOT NULL,
-        `TotalPrice` INT NOT NULL,
-        `Status` VARCHAR(255) NOT NULL,
-        FOREIGN KEY (`UserId`) REFERENCES `Users` (`Id`),
+        FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`),
         FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`)
     );
 
 CREATE TABLE
-    `Feedback` (
+    `Sales` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        `Topic` VARCHAR(255) NOT NULL,
-        `Msg` VARCHAR(255) NOT NULL,
-        `DateTime` DATE TIME NOT NULL
+        `BranchId` INT NOT NULL,
+        `ProductId` INT NOT NULL,
+        `Quantity` INT NOT NULL,
+        FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`),
+        FOREIGN KEY (`ProductId`) REFERENCES `Products` (`Id`)
     );
 
 CREATE TABLE
-    `Inquiry` (
+    `Expenses` (
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        `Topic` VARCHAR(255) NOT NULL,
-        `Msg` VARCHAR(255) NOT NULL,
-        `DateTime` DATE TIME NOT NULL
+        `BranchId` INT NOT NULL,
+        `Name` VARCHAR(255) NOT NULL,
+        `Amount` INT NOT NULL,
+        FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`)
     );
 
+------------------
+Role city id name branchdetails id cityid address squrfeet ownername User id RoleId branchid module id permission UserId moduleid branchid Category product stock id branchid ProductId currentquantity purchase id branchid ProductId quantity sales id branchid ProductId quantity expance Id branchid Name amount
