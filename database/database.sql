@@ -107,6 +107,3 @@ CREATE TABLE
         `Amount` INT NOT NULL,
         FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`)
     );
-
-------------------
-Role city id name branchdetails id cityid address squrfeet ownername User id RoleId branchid module id permission UserId moduleid branchid Category product stock id branchid ProductId currentquantity purchase id branchid ProductId quantity sales id branchid ProductId quantity expance Id branchid Name amount
