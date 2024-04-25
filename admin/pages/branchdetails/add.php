@@ -1,64 +1,74 @@
 <?php
 require ('../../includes/init.php');
 include pathOf('admin/includes/header.php');
+include pathOf('admin/includes/navbar.php');
 ?>
 
-<div class="main-content- h-100vh">
-    <div class="container h-100">
-        <div class="row h-100 align-items-center justify-content-center">
-            <div class="col-sm-10 col-md-7 col-lg-5">
-                <!-- Middle Box -->
-                <div class="middle-box">
-                    <div class="card-body">
-                        <div class="log-header-area card p-4 mb-4 text-center">
-                            <h5>Free Register</h5>
-                            <p class="mb-0">Get your free Flapt account now.</p>
-                        </div>
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <form action="https://demo.riktheme.com/fojota/top-menu/index.html">
-                                    <div class="form-group mb-3">
-                                        <label class="text-muted" for="fullname">Full Name</label>
-                                        <input class="form-control" type="text" id="fullname"
-                                            placeholder="Enter your name">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <label class="text-muted" for="fullname">Username</label>
-                                        <input class="form-control" type="text" id="username" placeholder="Username">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label class="text-muted" for="emailaddress">Email address</label>
-                                        <input class="form-control" type="email" id="emailaddress"
-                                            placeholder="Enter your email">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <label class="text-muted" for="password">Password</label>
-                                        <input class="form-control" type="password" id="password"
-                                            placeholder="Enter your password">
-                                    </div>
-
-                                    <div class="form-group mb-3">
-                                        <button class="btn btn-primary w-100 btn-lg" type="submit">Sign Up</button>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <span class="me-1">Already have an
-                                            account?</span>
-                                        <a class="fw-bold" href="login.html">Sign
-                                            in</a>
-                                    </div>
-                                </form>
+<div class="main-content">
+    <div class="content-wraper-area">
+        <!-- Basic Form area Start -->
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>Add Details</h4>
                             </div>
+
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="mb-3 row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" value="Hello World"
+                                                id="example-text-input">
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="mb-3 row">
+                                        <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="number" value="42"
+                                                id="example-number-input">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-xl-6">
+                                <div class="mb-3 row">
+                                        <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="email" value="email@example.com"
+                                                id="example-email-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 row">
+                                        <label for="example-password-input"
+                                            class="col-md-2 col-form-label">Password</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="password" value="hunter2"
+                                                id="example-password-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-primary mb-2 me-2"> <a href="./add.php">Add</a></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
+                
+
 <?php
+include pathOf('admin/includes/footer.php');
 include pathOf('admin/includes/script.php');
+include pathOf('admin/includes/pageEnd.php');
 ?>

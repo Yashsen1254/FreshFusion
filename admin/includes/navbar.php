@@ -220,16 +220,10 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="#">Dashboard</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index-2.html">Dashboard 1</a></li>
-                                        <li><a href="index-3.html">Dashboard 2</a></li>
-                                    </ul>
-                                </li>
                                 <li><a href="#">Shop</a>
                                     <ul class="dropdown">
-                                        <li><a href="product.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <li><a href="./pages/categories/index.php">Categorie</a></li>
+                                        <li><a href="./pages/product/index.php">Products</a></li>
                                         <li><a href="order.html">Orders</a></li>
                                         <li><a href="cart.html">Cart</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
