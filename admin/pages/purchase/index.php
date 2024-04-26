@@ -28,41 +28,44 @@ include pathOf('admin/includes/navbar.php');
                                 <table id="selection-datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
-                                            <th>Number</th>
-                                            <th>Name</th>
-                                            <th>Details</th>
+                                            <th>Id</th>
+                                            <th>BranchId</th>
+                                            <th>ProductId</th>
+                                            <th>Quantity</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-
                                         <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>10000</td>
                                             <td>
-                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
-                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
+                                            <a href="./update.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="#" class="btn btn-danger mb-2 me-2">Delete</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>10000</td>
                                             <td>
-                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
-                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
+                                            <a href="./update.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="#" class="btn btn-danger mb-2 me-2">Delete</a>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Donna Snider</td>
-                                            <td>Customer Support</td>
-                                            <td>New York</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>10000</td>
                                             <td>
-                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
-                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
+                                            <a href="./update.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="#" class="btn btn-danger mb-2 me-2">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>

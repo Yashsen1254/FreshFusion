@@ -234,7 +234,7 @@
                                 <li><a href="<?= urlOf('admin/pages/modules') ?>">Modules</a></li>
                                 <li><a href="<?= urlOf('admin/pages/city') ?>">City</a></li>
                                 <li><a href="<?= urlOf('admin/pages/branchdetails') ?>">BranchDetails</a></li>
-                                <li><a href="<?= urlOf('admin/pages/roles') ?>">Roles</a></li>
+                                <li><a href="<?= urlOf('admin/pages/role') ?>">Roles</a></li>
                             </ul>
                         </div>
                     </div>

@@ -13,44 +13,25 @@ include pathOf('admin/includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Update Details</h4>
+                                <h4>Update City</h4>
                             </div>
 
                             <div class="row">
+                                <div class="col-xl-6">
+                                <div class="mb-3 row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Id</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" value="Hello World"
+                                                id="example-text-input">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" value="Hello World"
                                                 id="example-text-input">
-                                        </div>
-                                    </div>
-
-                                    
-                                    <div class="mb-3 row">
-                                        <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-xl-6">
-                                <div class="mb-3 row">
-                                        <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 row">
-                                        <label for="example-password-input"
-                                            class="col-md-2 col-form-label">Password</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="password" value="hunter2"
-                                                id="example-password-input">
                                         </div>
                                     </div>
                                 </div>

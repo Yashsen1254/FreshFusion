@@ -13,13 +13,13 @@ include pathOf('admin/includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Details</h4>
+                                <h4>Add Product</h4>
                             </div>
 
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Id</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" value="Hello World"
                                                 id="example-text-input">
@@ -28,17 +28,25 @@ include pathOf('admin/includes/navbar.php');
 
                                     
                                     <div class="mb-3 row">
-                                        <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
+                                        <label for="example-number-input" class="col-md-2 col-form-label">CategoryId</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" value="42"
                                                 id="example-number-input">
                                         </div>
                                     </div>
 
+                                    
+                                    <div class="mb-3 row">
+                                        <label for="example-number-input" class="col-md-2 col-form-label">Name</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" value="42"
+                                                id="example-number-input">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-xl-6">
                                 <div class="mb-3 row">
-                                        <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
+                                        <label for="example-email-input" class="col-md-2 col-form-label">Details</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="email" value="email@example.com"
                                                 id="example-email-input">
@@ -47,15 +55,23 @@ include pathOf('admin/includes/navbar.php');
 
                                     <div class="mb-3 row">
                                         <label for="example-password-input"
-                                            class="col-md-2 col-form-label">Password</label>
+                                            class="col-md-2 col-form-label">Price</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="password" value="hunter2"
                                                 id="example-password-input">
                                         </div>
                                     </div>
+                                    
+                                    <div class="mb-3 row">
+                                        <label for="example-number-input" class="col-md-2 col-form-label">ImageFileName</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="number" value="42"
+                                                id="example-number-input">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a>
+                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
                         </div>
                     </div>
                 </div>
