@@ -21,7 +21,7 @@ CREATE TABLE
         `Id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `CityId` INT NOT NULL,
         `Address` VARCHAR(255) NOT NULL,
-        `Squrfeet` INT NOT NULL,
+        `Squarefeet` INT NOT NULL,
         `OwnerName` VARCHAR(255) NOT NULL,
         FOREIGN KEY (`CityId`) REFERENCES `City` (`Id`)
     );
