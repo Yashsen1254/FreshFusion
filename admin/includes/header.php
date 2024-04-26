@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="<?= urlOf('admin/assets/css/animate.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('admin/assets/css/introjs.min.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('admin/assets/style.css'); ?>">
+    <link rel="stylesheet" href="<?= urlOf('admin/assets/css/dataTables.bootstrap5.min.css') ?>">
+    <link rel="stylesheet" href="<?= urlOf('admin/assets/css/buttons.bootstrap5.min.css') ?>">
+    <link rel="stylesheet" href="<?= urlOf('admin/assets/css/select.dataTables.min.css') ?>">
 
 </head>
 

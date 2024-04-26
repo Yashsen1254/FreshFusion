@@ -13,7 +13,7 @@ include pathOf('admin/includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Details</h4>
+                                <h4>Update Details</h4>
                             </div>
 
                             <div class="row">
@@ -55,7 +55,7 @@ include pathOf('admin/includes/navbar.php');
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary mb-2 me-2"> <a href="./add.php">Add</a></button>
+                            <button type="button" class="btn btn-outline-dark mb-2 me-2"> <a href="./add.php">Update</a></button>
                         </div>
                     </div>
                 </div>

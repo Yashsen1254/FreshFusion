@@ -55,7 +55,7 @@ include pathOf('admin/includes/navbar.php');
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-primary mb-2 me-2"> <a href="./add.php">Add</a></button>
+                            <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a>
                         </div>
                     </div>
                 </div>

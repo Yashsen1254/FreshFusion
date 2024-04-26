@@ -8,45 +8,66 @@ include pathOf('admin/includes/navbar.php');
         <div class="data-table-area">
             <div class="container">
                 <div class="row g-4">
-
-
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body card-breadcrumb">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0">User</h4>
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item active"> <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a> </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <div class="card-title">
-                                    <h4>Multi item selection</h4>
-                                    <p>
-                                        This example shows the multi option. Note how a click on a row will
-                                        toggle
-                                        its selected state without effecting other rows,
-                                        unlike the os and single options shown in other examples.
-                                    </p>
-                                </div>
-                                <button type="button" class="btn btn-primary mb-2 me-2"> <a href="./add.php">Add</a></button>
                                 <table id="selection-datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th>Number</th>
                                             <th>Name</th>
-                                            <th>Detail</th>
-                                            <th colspan="2">Action</th>
+                                            <th>Details</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
 
+
                                     <tbody>
+
                                         <tr>
-                                            <td>1</td>
-                                            <td>Yash</td>
-                                            <td>Details</td>
+                                            <td>Donna Snider</td>
+                                            <td>Customer Support</td>
+                                            <td>New York</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary mb-2 me-2"><a href="./Update.php">Edit</a></button>
-                                                <button type="button" class="btn btn-danger mb-2 me-2">Delete</button>
+                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Donna Snider</td>
+                                            <td>Customer Support</td>
+                                            <td>New York</td>
+                                            <td>
+                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Donna Snider</td>
+                                            <td>Customer Support</td>
+                                            <td>New York</td>
+                                            <td>
+                                            <a href="./add.php" class="btn btn-primary mb-2 me-2">Update</a>
+                                            <a href="./add.php" class="btn btn-danger mb-2 me-2">Delete</a>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
-                                <table id="selection-datatable" class="table dt-responsive nowrap w-100">
-                                </table>
+
                             </div> <!-- end card body-->
                         </div> <!-- end card -->
                     </div>

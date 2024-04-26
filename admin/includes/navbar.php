@@ -222,119 +222,19 @@
                             <ul>
                                 <li><a href="#">Shop</a>
                                     <ul class="dropdown">
-                                        <li><a href="./pages/categories/index.php">Categorie</a></li>
-                                        <li><a href="./pages/product/index.php">Products</a></li>
-                                        <li><a href="order.html">Orders</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="invoice.html">Invoice</a></li>
+                                        <li><a href="<?= urlOf('admin/pages/categories') ?>">Categorie</a></li>
+                                        <li><a href="<?= urlOf('admin/pages/product') ?>">Products</a></li>
+                                        <li><a href="<?= urlOf('admin/pages/purchase') ?>">Purchase</a></li>
+                                        <li><a href="<?= urlOf('admin/pages/sales') ?>">Sales</a></li>
+                                        <li><a href="<?= urlOf('admin/pages/stocks') ?>">Stocks</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Apps</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-3">
-                                            <li class="title">Apps Pages</li>
-                                            <li><a href="calendar.html">Calendar</a></li>
-                                            <li><a href="chat-box.html">Chat box</a></li>
-                                            <li><a href="mail-inbox.html">Email Inbox</a></li>
-                                            <li><a href="mail-view.html">Mail View</a></li>
-                                            <li><a href="widgets.html">Widgets</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-3">
-                                            <li class="title">Authentication</li>
-                                            <li><a href="login.html">Login</a></li>
-                                            <li><a href="register.html">Register</a></li>
-                                            <li><a href="forget-password.html">Forget Password</a></li>
-                                            <li><a href="lock-screen.html">Lock Screen</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-3">
-                                            <li class="title">Charts</li>
-                                            <li><a href="apex-chart.html">Apex Chart</a></li>
-                                            <li><a href="chart-js.html">Chart Js</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">All Pages</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Pages</li>
-                                            <li><a href="account.html">Account Settings</a></li>
-                                            <li><a href="filemanager.html">File Manager</a></li>
-                                            <li><a href="profile.html">Profile</a></li>
-                                            <li><a href="kanban-board.html">Kanban Board</a></li>
-                                            <li><a href="timeline.html">Timeline</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Pages</li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="nestable-list.html">Nestable List</a></li>
-                                            <li><a href="notification.html">Notification</a></li>
-                                            <li><a href="kanban-board.html">Kanban Board</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Forms</li>
-                                            <li><a href="basic-form.html">Basic Form</a></li>
-                                            <li><a href="form-advanced.html">Advanced Form</a></li>
-                                            <li><a href="form-editor.html">Form Editor</a></li>
-                                            <li><a href="clipboard.html">Clipboard</a></li>
-                                            <li><a href="form-validation.html">Validation</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Forms</li>
-                                            <li><a href="form-wizard.html">Form Wizard</a></li>
-                                            <li><a href="form-mask.html">Input Mask</a></li>
-                                            <li><a href="form-upload.html">File Upload</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">Components</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Ui elements</li>
-                                            <li><a href="accordion.html">Accoordion</a></li>
-                                            <li><a href="alert.html">Alert</a></li>
-                                            <li><a href="badge.html">Badge</a></li>
-                                            <li><a href="buttons.html">Button</a></li>
-                                            <li><a href="breadcrumb.html">Breacrumb</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Ui elements</li>
-                                            <li><a href="card.html">Card</a></li>
-                                            <li><a href="carousel.html">Carousel</a></li>
-                                            <li><a href="modals.html">Modals</a></li>
-                                            <li><a href="list-group.html">List Group</a></li>
-                                            <li><a href="dropdown.html">Dropdown</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Ui elements</li>
-                                            <li><a href="progressbar.html">Progressbar</a></li>
-                                            <li><a href="preloader.html">Preloader</a></li>
-                                            <li><a href="popovers.html">Popovers</a></li>
-                                            <li><a href="pagination.html">Pagination</a></li>
-                                            <li><a href="scrollspy.html">Scrollspy</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li class="title">Ui elements</li>
-                                            <li><a href="session-timeout.html">Session Timeout</a></li>
-                                            <li><a href="offcanvas.html">Offcanvas</a></li>
-                                            <li><a href="modals.html">Modals</a></li>
-                                            <li><a href="list-group.html">List Group</a></li>
-                                            <li><a href="carousel.html">Carousel</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="#">Extra Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="basic-table.html">Basic Table</a></li>
-                                        <li><a href="data-table.html">Data Table</a></li>
-                                        <li><a href="elegant-icons.html">Elegant Icon</a></li>
-                                        <li><a href="et-line-icons.html">Etline icon</a></li>
-                                        <li><a href="font-awesome.html">Font-awsome</a></li>
-                                        <li><a href="matarial-icons.html">Matarial Icon</a></li>
-                                        <li><a href="pe-7-stroke.html">Pe-7-Stroke</a></li>
-                                        <li><a href="themify-icons.html">Themify Icon</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="<?= urlOf('admin/pages/expanses') ?>">Expanses</a></li>
+                                <li><a href="<?= urlOf('admin/pages/user') ?>">Users</a></li>
+                                <li><a href="<?= urlOf('admin/pages/modules') ?>">Modules</a></li>
+                                <li><a href="<?= urlOf('admin/pages/city') ?>">City</a></li>
+                                <li><a href="<?= urlOf('admin/pages/branchdetails') ?>">BranchDetails</a></li>
+                                <li><a href="<?= urlOf('admin/pages/roles') ?>">Roles</a></li>
                             </ul>
                         </div>
                     </div>
