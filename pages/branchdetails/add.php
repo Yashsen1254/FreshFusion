@@ -18,7 +18,7 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <div class="row mb-3">
+                                    <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">City</label>
                                         <div class="col-md-10">
                                             <select class="form-select">
@@ -30,22 +30,22 @@ include pathOf('includes/navbar.php');
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label for="example-number-input"
+                                        <label for="example-password-input"
                                             class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
+                                            <input class="form-control" type="text" value="hunter2"
+                                                id="example-password-input">
                                         </div>
                                     </div>
 
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
-                                        <label for="example-email-input"
-                                            class="col-md-2 col-form-label">Squarefeet</label>
+                                        <label for="example-number-input"
+                                            class="col-md-2 col-form-label">SquareFeet</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
+                                            <input class="form-control" type="number" value="42"
+                                                id="example-number-input">
                                         </div>
                                     </div>
 

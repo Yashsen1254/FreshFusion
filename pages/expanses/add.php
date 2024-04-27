@@ -28,16 +28,14 @@ include pathOf('includes/navbar.php');
                                             </select>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="col-xl-6">
-                                <div class="mb-3 row">
+                                    <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="example-email-input">
+                                            <input class="form-control" type="text" id="example-email-input">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xl-6">
 
                                     <div class="mb-3 row">
                                         <label for="example-password-input"
@@ -59,7 +57,7 @@ include pathOf('includes/navbar.php');
     </div>
 </div>
 
-                
+
 
 <?php
 include pathOf('includes/footer.php');
