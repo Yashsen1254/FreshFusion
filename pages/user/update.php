@@ -13,13 +13,12 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Update Users</h4>
+                                <h4>Add Users</h4>
                             </div>
 
-                            
                             <div class="row">
                                 <div class="col-xl-6">
-                                    
+
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Role</label>
                                         <div class="col-md-10">
@@ -37,19 +36,15 @@ include pathOf('includes/navbar.php');
                                                 id="example-text-input">
                                         </div>
                                     </div>
-
-
-
-
-                                </div>
-                                <div class="col-xl-6">
                                     <div class="mb-3 row">
-                                        <label for="example-email-input" class="col-md-2 col-form-label">Mobile</label>
+                                        <label for="example-number-input" class="col-md-2 col-form-label">Mobile</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
+                                            <input class="form-control" type="number" value="42"
+                                                id="example-number-input">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
                                         <div class="col-md-10">
@@ -59,11 +54,9 @@ include pathOf('includes/navbar.php');
                                     </div>
 
                                     <div class="mb-3 row">
-                                        <label for="example-password-input"
-                                            class="col-md-2 col-form-label">Address</label>
+                                        <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="password" value="hunter2"
-                                                id="example-password-input">
+                                            <input class="form-control" type="text" id="example-email-input">
                                         </div>
                                     </div>
                                 </div>
@@ -77,6 +70,8 @@ include pathOf('includes/navbar.php');
 
     </div>
 </div>
+
+
 
 <?php
 include pathOf('includes/footer.php');

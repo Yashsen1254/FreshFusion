@@ -13,10 +13,11 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Update City</h4>
+                                <h4>Add City</h4>
                             </div>
 
                             <div class="row">
+                                
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
@@ -27,7 +28,7 @@ include pathOf('includes/navbar.php');
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Update</a>
+                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
                         </div>
                     </div>
                 </div>
@@ -36,6 +37,8 @@ include pathOf('includes/navbar.php');
 
     </div>
 </div>
+
+
 
 <?php
 include pathOf('includes/footer.php');

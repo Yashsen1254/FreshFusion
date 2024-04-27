@@ -13,12 +13,12 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Update Expanses</h4>
+                                <h4>Add Expanses</h4>
                             </div>
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <div class="row mb-3">
+                                    <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Branch</label>
                                         <div class="col-md-10">
                                             <select class="form-select">
@@ -28,16 +28,14 @@ include pathOf('includes/navbar.php');
                                             </select>
                                         </div>
                                     </div>
-
-                                </div>
-                                <div class="col-xl-6">
-                                <div class="mb-3 row">
+                                    <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="example-email-input">
+                                            <input class="form-control" type="text" id="example-email-input">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-xl-6">
 
                                     <div class="mb-3 row">
                                         <label for="example-password-input"
@@ -58,6 +56,8 @@ include pathOf('includes/navbar.php');
 
     </div>
 </div>
+
+
 
 <?php
 include pathOf('includes/footer.php');
