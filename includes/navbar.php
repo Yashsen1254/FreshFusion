@@ -11,11 +11,12 @@
                     <div class="top-logo">
                         <a href="index-2.html"><img src="<?= urlOf('assets/img/core-img/small-logo.png') ?>"
                                 alt="Top Logo"></a>
+
                     </div>
 
                     <!-- Left Side Nav -->
                     <ul class="left-side-navbar d-flex align-items-center">
-
+                        <b>FreshFusion</b>
                     </ul>
                 </div>
 

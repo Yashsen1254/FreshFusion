@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="<?= urlOf('assets/css/classynav.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/animate.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/introjs.min.css'); ?>">
-    <link rel="stylesheet" href="<?= urlOf('assets/style.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/dataTables.bootstrap5.min.css') ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/buttons.bootstrap5.min.css') ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/select.dataTables.min.css') ?>">
