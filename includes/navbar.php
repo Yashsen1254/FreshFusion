@@ -73,7 +73,7 @@
                                         <li><a href="<?= urlOf('pages/stocks') ?>">Stocks</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?= urlOf('pages/expanses') ?>">Expanses</a></li>
+                                <li><a href="<?= urlOf('pages/expenses') ?>">Expenses</a></li>
                                 <li><a href="<?= urlOf('pages/user') ?>">Users</a></li>
                                 <li><a href="<?= urlOf('pages/modules') ?>">Modules</a></li>
                                 <li><a href="<?= urlOf('pages/city') ?>">City</a></li>

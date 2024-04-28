@@ -13,7 +13,7 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Expanses</h4>
+                                <h4>Add Expenses</h4>
                             </div>
 
                             <div class="row">

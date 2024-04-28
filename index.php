@@ -31,7 +31,7 @@ include pathOf('includes/navbar.php');
 
                         <div class="col-sm-6 col-lg-6 col-xxl-3">
                             <div class="card ">
-                                <div class="card-body" data-intro="New Orders">
+                                <div class="card-body">
                                     <div class="single-widget d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="widget-icon">
@@ -42,8 +42,7 @@ include pathOf('includes/navbar.php');
                                                 <p class="mb-0">Awating Processing</p>
                                             </div>
                                         </div>
-                                        <div class="progress-report" data-title="progress"
-                                            data-intro="And this is the last step!">
+                                        <div class="progress-report">
                                             <p>+ 3.56%</p>
                                         </div>
                                     </div>
@@ -53,7 +52,7 @@ include pathOf('includes/navbar.php');
 
                         <div class="col-sm-6 col-lg-6 col-xxl-3">
                             <div class="card">
-                                <div class="card-body" data-intro="New Customers">
+                                <div class="card-body">
                                     <div class="single-widget d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="widget-icon">
@@ -64,7 +63,7 @@ include pathOf('includes/navbar.php');
                                                 <p class="mb-0">Awating Processing</p>
                                             </div>
                                         </div>
-                                        <div class="progress-report" data-title="progress">
+                                        <div class="progress-report">
                                             <p>+ 4.56%</p>
                                         </div>
                                     </div>
@@ -74,7 +73,7 @@ include pathOf('includes/navbar.php');
 
                         <div class="col-sm-6 col-lg-6 col-xxl-3">
                             <div class="card">
-                                <div class="card-body" data-intro="Revenue">
+                                <div class="card-body">
                                     <div class="single-widget d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="widget-icon">
@@ -85,8 +84,7 @@ include pathOf('includes/navbar.php');
                                                 <p class="mb-0">Awating Processing</p>
                                             </div>
                                         </div>
-                                        <div class="progress-report" data-title="progress"
-                                            data-intro="And this is the last step!">
+                                        <div class="progress-report">
                                             <p>- 2.56%</p>
                                         </div>
                                     </div>
@@ -96,7 +94,7 @@ include pathOf('includes/navbar.php');
 
                         <div class="col-sm-6 col-lg-6 col-xxl-3">
                             <div class="card">
-                                <div class="card-body" data-intro="Growth">
+                                <div class="card-body">
                                     <div class="single-widget d-flex align-items-center justify-content-between">
                                         <div>
                                             <div class="widget-icon">
@@ -107,8 +105,7 @@ include pathOf('includes/navbar.php');
                                                 <p class="mb-0">Awating Processing</p>
                                             </div>
                                         </div>
-                                        <div class="progress-report" data-title="progress"
-                                            data-intro="And this is the last step!">
+                                        <div class="progress-report">
                                             <p>+ 2.56%</p>
                                         </div>
                                     </div>
