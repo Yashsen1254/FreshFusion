@@ -3,6 +3,12 @@ require ('../../includes/init.php');
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
+<?php
+
+$query = "SELECT * FROM roles";
+$rows = select($query);
+
+?>
 <div class="main-content">
     <div class="content-wraper-area">
         <div class="data-table-area">
@@ -38,22 +44,24 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
+                                        <?php foreach($rows as $user): ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>Yash</td>
+                                            <td><?= $user['Id'] ?></td>
+                                            <td><?= $user['Name'] ?></td>
                                             <td>
-                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php">
+                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php?id=<?= $user['Id'] ?>">
                                                     <div class="fa fa-edit">
                                                     </div>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a class="btn btn-danger btn-circle mb-2" href="#">
+                                                <a class="btn btn-danger btn-circle mb-2" href="../../api/role/delete.php?id=<?= $user['Id'] ?>">
                                                     <div class="fa fa-trash">
                                                     </div>
                                                 </a>
                                             </td>
                                         </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
