@@ -22,7 +22,7 @@ include pathOf('includes/navbar.php');
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text"
-                                                id="name" name="name">
+                                                id="Name" name="Name">
                                         </div>
                                     </div>
                                 </div>
@@ -47,13 +47,13 @@ include pathOf('includes/pageEnd.php');
 
 <script>
     function sendData() {
-            var name = $("#name").val();
+            var Name = $("#Name").val();
 
             $.ajax({
                 url: "../../api/role/add.php",
                 method: "POST",
                 data: {
-                    name: name,
+                    Name: Name,
                 },
                 success: function (response) {
                     alert("Role Added");

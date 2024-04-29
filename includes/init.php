@@ -40,7 +40,7 @@ function select($query, $params = null)
 {
     global $connection;
 
-    $statement = $connection->prepare($query);
+    $statement = $connection->prepare($query); 
     $statement->execute($params);
 
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);

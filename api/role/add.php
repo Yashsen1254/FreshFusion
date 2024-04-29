@@ -1,9 +1,9 @@
 <?php
 
 require ('../../includes/init.php');
-$name = $_POST["name"];
-$query = "INSERT INTO roles (name) VALUES (?)";
-$param = [$name];
+$Name = $_POST["Name"];
+$query = "INSERT INTO roles (Name) VALUES (?)";
+$param = [$Name];
 execute($query, $param);
 
 ?>

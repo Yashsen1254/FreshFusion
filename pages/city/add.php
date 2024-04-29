@@ -17,18 +17,17 @@ include pathOf('includes/navbar.php');
                             </div>
 
                             <div class="row">
-                                
+
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text" id="name" name="name">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="sendData()">Add</button>
                         </div>
                     </div>
                 </div>
@@ -45,3 +44,21 @@ include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
 include pathOf('includes/pageEnd.php');
 ?>
+
+<script>
+    function sendData() {
+        var name = $("#name").val();
+
+        $.ajax({
+            url: "../../api/city/add.php",
+            method: "POST",
+            data: {
+                name: name,
+            },
+            success: function (response) {
+                alert("City Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>

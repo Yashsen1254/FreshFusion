@@ -3,12 +3,14 @@ require ('../../includes/init.php');
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
+
 <?php
 
 $query = "SELECT * FROM roles";
 $rows = select($query);
 
 ?>
+
 <div class="main-content">
     <div class="content-wraper-area">
         <div class="data-table-area">

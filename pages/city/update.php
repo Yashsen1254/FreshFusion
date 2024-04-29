@@ -4,6 +4,14 @@ include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
 
+<?php
+
+$id = $_GET["id"];
+$querry = "SELECT * FROM city WHERE Id = $id";
+$rows = selectOne($querry);
+
+?>
+
 <div class="main-content">
     <div class="content-wraper-area">
         <!-- Basic Form area Start -->
@@ -17,18 +25,23 @@ include pathOf('includes/navbar.php');
                             </div>
 
                             <div class="row">
-                                
                                 <div class="col-xl-6">
+                                <div class="mb-3 row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Id</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="text" id="Id" name="Id" readonly value="<?= $rows['Id'] ?>">
+                                        </div>
+                                    </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text"
+                                                id="Name" name="Name">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="updateData()" type="submit">Update</button>
                         </div>
                     </div>
                 </div>
@@ -45,3 +58,23 @@ include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
 include pathOf('includes/pageEnd.php');
 ?>
+
+<script>
+    function updateData() {
+        var Id = $("#Id").val();
+        var Name = $("#Name").val();
+
+        $.ajax({
+            url: "../../api/city/update.php",
+            method: "POST",
+            data: {
+                Id: Id,
+                Name: Name
+            },
+            success: function (response) {
+                alert("City Updated");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>
