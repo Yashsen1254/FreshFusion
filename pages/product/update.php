@@ -55,8 +55,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">ImageName</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="file">
                                         </div>
                                     </div>
                                 </div>

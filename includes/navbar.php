@@ -9,15 +9,13 @@
                 <div class="left-side-content-area d-flex align-items-center">
                     <!-- Top Logo -->
                     <div class="top-logo">
-                        <a href="index-2.html"><img src="<?= urlOf('assets/img/core-img/small-logo.png') ?>"
+                        <a href="<?= urlOf('index.php') ?>"><img src="<?= urlOf('assets/img/core-img/logo1.jpg') ?>"
                                 alt="Top Logo"></a>
 
                     </div>
 
                     <!-- Left Side Nav -->
-                    <ul class="left-side-navbar d-flex align-items-center">
-                        <b>FreshFusion</b>
-                    </ul>
+                    
                 </div>
 
                 <div class="right-side-navbar d-flex align-items-center justify-content-end">
