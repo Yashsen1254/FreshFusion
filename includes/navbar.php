@@ -64,6 +64,7 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
+                                <li><a href="<?= urlOf('index.php') ?>">Dashboard</a></li>
                                 <li><a href="#">Shop</a>
                                     <ul class="dropdown">
                                         <li><a href="<?= urlOf('pages/categories') ?>">Categorie</a></li>
