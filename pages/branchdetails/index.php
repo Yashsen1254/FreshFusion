@@ -1,8 +1,11 @@
 <?php
 require ('../../includes/init.php');
+$branchDetails = select("SELECT BranchDetails.Id, BranchDetails.Address, BranchDetails.Squarefeet, BranchDetails.OwnerName, City.Name FROM BranchDetails INNER JOIN City ON BranchDetails.CityId = City.Id");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
+
 <div class="main-content">
     <div class="content-wraper-area">
         <div class="data-table-area">
@@ -41,28 +44,39 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>New York</td>
-                                            <td>100</td>
-                                            <td>Yash</td>
-                                            <td>
-                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php">
-                                                    <div class="fa fa-edit">
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>
-                                            <a class="btn btn-danger btn-circle mb-2" href="#">
-                                                <div class="fa fa-trash">
-                                                </div>
-                                            </a>
-                                            </td>
-                                        </tr>
+                                        <?php foreach ($branchDetails as $branchDetail): ?>
+                                            <tr>
+                                                <td><?= $index += 1 ?></td>
+                                                <td><?= $branchDetail['Name'] ?></td>
+                                                <td><?= $branchDetail['Address'] ?></td>
+                                                <td><?= $branchDetail['Squarefeet'] ?></td>
+                                                <td><?= $branchDetail['OwnerName'] ?></td>
+                                                <form action="./update.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="id" value="<?= $branchDetail['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <form action="../../api/branchdetails/delete.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="id" value="<?= $branchDetail['Id'] ?>">
+                                                        <button type="submit" class="btn btn-danger btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <!-- <td>
+                                                    <a class="btn btn-danger btn-circle mb-2" href="#">
+                                                        <div class="fa fa-trash">
+                                                        </div>
+                                                    </a>
+                                                </td> -->
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
-
                             </div> <!-- end card body-->
                         </div> <!-- end card -->
                     </div>
