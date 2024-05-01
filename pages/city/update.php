@@ -26,18 +26,19 @@ $cities = selectOne($querry);
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <input class="form-control" type="hidden" id="Id" name="Id"
+                                    <input class="form-control" type="hidden" id="Id" name="Id"
                                         value="<?= $cities['Id'] ?>">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="Name" name="Name" autofocus value="<?= $cities['Name'] ?>">
+                                            <input class="form-control" type="text" id="Name" name="Name" autofocus
+                                                value="<?= $cities['Name'] ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success mb-2 me-2" onclick="updateData()" type="submit">Update</button>
+                            <button class="btn btn-success mb-2 me-2" onclick="updateData()"
+                                type="submit">Update</button>
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,8 @@ $index = 0;
                                     <h4 class="mb-0">City</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
                                 </div>
@@ -46,14 +47,13 @@ $index = 0;
 
 
                                     <tbody>
-                                    <?php foreach ($cities as $city): ?>
+                                        <?php foreach ($cities as $city): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
                                                 <td><?= $city['Name'] ?></td>
                                                 <form action="./update.php" method="post">
                                                     <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $city['Id'] ?>">
+                                                        <input type="hidden" name="Id" id="Id" value="<?= $city['Id'] ?>">
                                                         <button type="submit" class="btn btn-primary btn-circle mb-2">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
@@ -92,7 +92,7 @@ $index = 0;
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted'); 
+                    alert('BranchDetails Deleted');
                 }
             })
         }
