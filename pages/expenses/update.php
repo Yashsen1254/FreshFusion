@@ -1,5 +1,8 @@
 <?php
 require ('../../includes/init.php');
+$branchDetails = select("SELECT * FROM BranchDetails");
+$Id = $_POST["Id"];
+$expanses = selectOne("SELECT * FROM expenses WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -18,20 +21,22 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
+                                <input class="form-control" type="Hidden" id="Id" name="Id"
+                                        value="<?= $expanses['Id'] ?>">
                                     <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Branch</label>
+                                        <label class="col-md-2 col-form-label">Add Branch</label>
                                         <div class="col-md-10">
-                                            <select class="form-select">
-                                                <option>Select</option>
-                                                <option>Large select</option>
-                                                <option>Small select</option>
+                                            <select class="form-select" id="BranchId">
+                                                <?php foreach ($branchDetails as $branchDetail): ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="example-email-input">
+                                            <input class="form-control" type="text" id="Name" autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -42,12 +47,12 @@ include pathOf('includes/navbar.php');
                                             class="col-md-2 col-form-label">Amount</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" value="hunter2"
-                                                id="example-password-input">
+                                                id="Amount">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="updateData()">Update</button>
                         </div>
                     </div>
                 </div>
@@ -62,5 +67,26 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
+?>
+<script>
+    function updateData() {
+        let data = {
+            BranchId: $("#BranchId").val(),
+            Name: $("#Name").val(),
+            Amount: $("#Amount").val(),
+        }
+
+        $.ajax({
+            url: "../../api/expenses/update.php",
+            method: "POST",
+            data: data,
+            success: function (response) {
+                alert("BranchDetails Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>
+<?php
 include pathOf('includes/pageEnd.php');
 ?>

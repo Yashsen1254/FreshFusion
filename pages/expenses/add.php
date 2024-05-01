@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$branchDetails = select("SELECT * FROM BranchDetails");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -18,20 +19,20 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Branch</label>
+                                <div class="row mb-3">
+                                        <label class="col-md-2 col-form-label">Select Branch</label>
                                         <div class="col-md-10">
-                                            <select class="form-select">
-                                                <option>Select</option>
-                                                <option>Large select</option>
-                                                <option>Small select</option>
+                                            <select class="form-select" id="BranchId">
+                                                <?php foreach ($branchDetails as $branchDetail): ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="example-email-input">
+                                            <input class="form-control" type="text" id="Name" autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -42,12 +43,12 @@ include pathOf('includes/navbar.php');
                                             class="col-md-2 col-form-label">Amount</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" value="hunter2"
-                                                id="example-password-input">
+                                                id="Amount">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="sendData()">Add</button>
                         </div>
                     </div>
                 </div>
@@ -62,5 +63,26 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
+?>
+<script>
+    function sendData() {
+        let data = {
+            BranchId: $("#BranchId").val(),
+            Name: $("#Name").val(),
+            Amount: $("#Amount").val(),
+        }
+
+        $.ajax({
+            url: "../../api/expenses/add.php",
+            method: "POST",
+            data: data,
+            success: function (response) {
+                alert("BranchDetails Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>
+<?php
 include pathOf('includes/pageEnd.php');
 ?>
