@@ -8,7 +8,7 @@ include pathOf('includes/navbar.php');
 
 $Id = $_POST["Id"];
 $querry = "SELECT * FROM categories WHERE Id = $Id";
-$rows = selectOne($querry);
+$categories = selectOne($querry);
 
 ?>
 
@@ -25,18 +25,21 @@ $rows = selectOne($querry);
                             </div>
 
                             <div class="row">
-                                
+
                                 <div class="col-xl-6">
-                                            <input class="form-control" type="hidden" id="Id" name="Id"  value="<?= $rows['Id'] ?>">
+                                    <input class="form-control" type="hidden" id="Id" name="Id"
+                                        value="<?= $categories['Id'] ?>">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Name" name="Name" value="<?= $rows['Name'] ?>" autofocus>
+                                            <input class="form-control" type="text" id="Name" name="Name"
+                                                value="<?= $categories['Name'] ?>" autofocus>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success mb-2 me-2" onclick="updateData()" type="submit">Update</button>
+                            <button class="btn btn-success mb-2 me-2" onclick="updateData()"
+                                type="submit">Update</button>
                         </div>
                     </div>
                 </div>
@@ -53,21 +56,21 @@ include pathOf('includes/pageEnd.php');
 ?>
 
 <script>
-        function updateData() {
-            var Id = $("#Id").val();
-            var Name = $("#Name").val();
+    function updateData() {
+        var Id = $("#Id").val();
+        var Name = $("#Name").val();
 
-            $.ajax({
-                url: "../../api/categories/update.php",
-                method: "POST",
-                data: {
-                    Id:Id,
-                    Name: Name
-                },
-                success: function (response) {
-                    alert("Categorie Updated");
-                    window.location.href = './index.php';
-                }
-            })
-        }
-    </script>
+        $.ajax({
+            url: "../../api/categories/update.php",
+            method: "POST",
+            data: {
+                Id: Id,
+                Name: Name
+            },
+            success: function (response) {
+                alert("Categorie Updated");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>

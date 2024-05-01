@@ -6,9 +6,9 @@ include pathOf('includes/navbar.php');
 
 <?php
 
-$id = $_GET["id"];
-$querry = "SELECT * FROM city WHERE Id = $id";
-$rows = selectOne($querry);
+$Id = $_POST["Id"];
+$querry = "SELECT * FROM city WHERE Id = $Id";
+$cities = selectOne($querry);
 
 ?>
 
@@ -26,17 +26,13 @@ $rows = selectOne($querry);
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Id</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Id" name="Id" readonly value="<?= $rows['Id'] ?>">
-                                        </div>
-                                    </div>
+                                <input class="form-control" type="hidden" id="Id" name="Id"
+                                        value="<?= $cities['Id'] ?>">
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text"
-                                                id="Name" name="Name">
+                                                id="Name" name="Name" autofocus value="<?= $cities['Name'] ?>">
                                         </div>
                                     </div>
                                 </div>

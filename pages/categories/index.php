@@ -47,7 +47,7 @@ $index = 0;
 
 
                                     <tbody>
-                                    <?php foreach ($categories as $category): ?>
+                                        <?php foreach ($categories as $category): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
                                                 <td><?= $category['Name'] ?></td>
@@ -93,7 +93,7 @@ $index = 0;
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted'); 
+                    alert('BranchDetails Deleted');
                 }
             })
         }

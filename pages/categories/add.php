@@ -21,8 +21,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="Name" name="Name" autofocus>
+                                            <input class="form-control" type="text" id="Name" name="Name" autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -47,18 +46,18 @@ include pathOf('includes/pageEnd.php');
 
 <script>
     function sendData() {
-            var Name = $("#Name").val();
+        var Name = $("#Name").val();
 
-            $.ajax({
-                url: "../../api/categories/add.php",
-                method: "POST",
-                data: {
-                    Name: Name,
-                },
-                success: function (response) {
-                    alert("Categorie Added");
-                    window.location.href = './index.php';
-                }
-            })
-        }
+        $.ajax({
+            url: "../../api/categories/add.php",
+            method: "POST",
+            data: {
+                Name: Name,
+            },
+            success: function (response) {
+                alert("Categorie Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
 </script>

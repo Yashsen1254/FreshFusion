@@ -7,7 +7,8 @@ include pathOf('includes/navbar.php');
 <?php
 
 $query = "SELECT * FROM city";
-$rows = select($query);
+$cities = select($query);
+$index = 0;
 
 ?>
 
@@ -45,24 +46,27 @@ $rows = select($query);
 
 
                                     <tbody>
-                                    <?php foreach($rows as $user): ?>
-                                        <tr>
-                                            <td><?= $user['Id'] ?></td>
-                                            <td><?= $user['Name'] ?></td>
-                                            <td>
-                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php?id=<?= $user['Id'] ?>">
-                                                    <div class="fa fa-edit">
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-danger btn-circle mb-2" href="../../api/city/delete.php?id=<?= $user['Id'] ?>">
-                                                    <div class="fa fa-trash">
-                                                    </div>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
+                                    <?php foreach ($cities as $city): ?>
+                                            <tr>
+                                                <td><?= $index += 1 ?></td>
+                                                <td><?= $city['Name'] ?></td>
+                                                <form action="./update.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $city['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <td>
+                                                    <button type="submit" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deleteCity(<?= $city['Id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
@@ -77,5 +81,22 @@ $rows = select($query);
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/script.php');
+    ?>
+    <script>
+        function deleteCity(Id) {
+            if (confirm("sure you want to delete this branch"));
+            $.ajax({
+                url: "../../api/city/delete.php",
+                method: "POST",
+                data: {
+                    Id: Id
+                },
+                success: function (response) {
+                    alert('BranchDetails Deleted'); 
+                }
+            })
+        }
+    </script>
+    <?php
     include pathOf('includes/pageEnd.php');
     ?>

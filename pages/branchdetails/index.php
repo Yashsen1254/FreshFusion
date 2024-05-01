@@ -93,7 +93,7 @@ include pathOf('includes/navbar.php');
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted'); 
+                    alert('BranchDetails Deleted');
                 }
             })
         }

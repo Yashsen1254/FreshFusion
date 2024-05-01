@@ -13,7 +13,7 @@ include pathOf('includes/navbar.php');
         <div class="container">
             <div class="row g-4">
                 <div class="col-12">
-                    <div class="card"> 
+                    <div class="card">
                         <div class="card-body">
                             <div class="card-title">
                                 <h4>Add Branch Details</h4>
@@ -21,13 +21,14 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <input class="form-control" type="Hidden" id="Id" name="Id" value="<?= $result['Id'] ?>">
+                                    <input class="form-control" type="Hidden" id="Id" name="Id"
+                                        value="<?= $result['Id'] ?>">
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">City</label>
                                         <div class="col-md-10">
                                             <select class="form-select" id="cityId">
-                                                <?php foreach($cities as $city) : ?>
-                                                <option value="<?= $city['Id'] ?>"><?= $city['Name'] ?></option>
+                                                <?php foreach ($cities as $city): ?>
+                                                    <option value="<?= $city['Id'] ?>"><?= $city['Name'] ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -37,19 +38,17 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="Address">
+                                            <input class="form-control" type="text" id="Address">
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
                                         <label for="example-number-input"
                                             class="col-md-2 col-form-label">SquareFeet</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number"
-                                                id="Squarefeet">
+                                            <input class="form-control" type="number" id="Squarefeet">
                                         </div>
                                     </div>
 
@@ -57,8 +56,7 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Owner</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="OwnerName">
+                                            <input class="form-control" type="text" id="OwnerName">
                                         </div>
                                     </div>
                                 </div>
