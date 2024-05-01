@@ -21,8 +21,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"
-                                                id="Name" name="Name">
+                                            <input class="form-control" type="text" id="Name" name="Name" autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -42,23 +41,27 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
-include pathOf('includes/pageEnd.php');
 ?>
+
 
 <script>
     function sendData() {
-            var Name = $("#Name").val();
+        var Name = $("#Name").val();
 
-            $.ajax({
-                url: "../../api/role/add.php",
-                method: "POST",
-                data: {
-                    Name: Name,
-                },
-                success: function (response) {
-                    alert("Role Added");
-                    window.location.href = './index.php';
-                }
-            })
-        }
+        $.ajax({
+            url: "../../api/role/add.php",
+            method: "POST",
+            data: {
+                Name: Name,
+            },
+            success: function (response) {
+                alert("Role Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
 </script>
+
+<?php
+include pathOf('includes/pageEnd.php');
+?>
