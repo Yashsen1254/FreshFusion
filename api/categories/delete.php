@@ -1,7 +1,7 @@
 <?php
 
 require('../../includes/init.php');
-$Id = $_GET['id'];
+$Id = $_POST['Id'];
 $query = "DELETE FROM categories WHERE Id = ?";
 $param = [$Id];
 $result = execute($query,$param);
