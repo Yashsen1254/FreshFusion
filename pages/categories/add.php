@@ -21,8 +21,8 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text"\
-                                                id="Name" name="Name">
+                                            <input class="form-control" type="text"
+                                                id="Name" name="Name" autofocus>
                                         </div>
                                     </div>
                                 </div>
