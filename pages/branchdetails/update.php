@@ -1,10 +1,10 @@
 <?php
 require ('../../includes/init.php');
 $cities = select("SELECT * FROM City");
+$Id = $_POST["Id"];
+$result = selectOne("SELECT * FROM branchdetails WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
-$Id = $_GET["Id"];
-$result = select("SELECT * FROM branchdetails WHERE Id = $Id");
 ?>
 
 <div class="main-content">
@@ -21,12 +21,7 @@ $result = select("SELECT * FROM branchdetails WHERE Id = $Id");
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                    <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Id</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Id" name="Id" readonly value="<?= $result['Id'] ?>">
-                                        </div>
-                                    </div>
+                                    <input class="form-control" type="Hidden" id="Id" name="Id" value="<?= $result['Id'] ?>">
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">City</label>
                                         <div class="col-md-10">
@@ -89,6 +84,7 @@ include pathOf('includes/pageEnd.php');
 <script>
     function updateData() {
         let data = {
+            Id: $("#Id").val(),
             cityId: $("#cityId").val(),
             Address: $("#Address").val(),
             Squarefeet: $("#Squarefeet").val(),

@@ -53,26 +53,19 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $branchDetail['OwnerName'] ?></td>
                                                 <form action="./update.php" method="post">
                                                     <td>
-                                                        <input type="hidden" name="id" value="<?= $branchDetail['Id'] ?>">
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $branchDetail['Id'] ?>">
                                                         <button type="submit" class="btn btn-primary btn-circle mb-2">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                     </td>
                                                 </form>
-                                                <form action="../../api/branchdetails/delete.php" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="id" value="<?= $branchDetail['Id'] ?>">
-                                                        <button type="submit" class="btn btn-danger btn-circle mb-2">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <!-- <td>
-                                                    <a class="btn btn-danger btn-circle mb-2" href="#">
-                                                        <div class="fa fa-trash">
-                                                        </div>
-                                                    </a>
-                                                </td> -->
+                                                <td>
+                                                    <button type="submit" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deleteBranch(<?= $branchDetail['Id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -88,5 +81,24 @@ include pathOf('includes/navbar.php');
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/script.php');
+    ?>
+
+    <script>
+        function deleteBranch(Id) {
+            if (confirm("sure you want to delete this branch"));
+            $.ajax({
+                url: "../../api/branchdetails/delete.php",
+                method: "POST",
+                data: {
+                    Id: Id
+                },
+                success: function (response) {
+                    alert('BranchDetails Deleted'); 
+                }
+            })
+        }
+    </script>
+
+    <?php
     include pathOf('includes/pageEnd.php');
     ?>
