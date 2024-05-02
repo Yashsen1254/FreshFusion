@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$categories = select("SELECT * FROM Categories");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -19,49 +20,47 @@ include pathOf('includes/navbar.php');
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Categorie</label>
+                                        <label class="col-md-2 col-form-label">Select Categorie</label>
                                         <div class="col-md-10">
-                                            <select class="form-select">
-                                                <option>Select</option>
-                                                <option>Large select</option>
-                                                <option>Small select</option>
+                                            <select class="form-select" id="categoryId">
+                                                <?php foreach ($categories as $category): ?>
+                                                    <option value="<?= $category['Id'] ?>"><?= $category['Id'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text" id="Name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Details</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text" id="Details">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-xl-6">
                                     <div class="mb-3 row">
-                                        <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
+                                        <label for="example-number-input" class="col-md-2 col-form-label">Price</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
+                                            <input class="form-control" type="number" id="Price">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input"
                                             class="col-md-2 col-form-label">ImageName</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="file">
+                                            <input class="form-control" type="file" id="Image">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="sendData()">Add</button>
                         </div>
                     </div>
                 </div>
@@ -76,5 +75,30 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
+?>
+<script>
+    function sendData() {
+        var form = new FormData();
+            form.append('categoryId', $('#categoryId').val());
+            form.append('Name', $('#Name').val());
+            form.append('Details', $('#Details').val());
+            form.append('Price', $('#Price').val());
+            form.append('Image', $('#Image')[0].files[0]);
+
+            $.ajax({
+                url: '../../api/product/add.php',
+                method: 'POST',
+                data: form,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    console.log(response);
+                    if (response.success !== true)
+                        return;
+                }
+            })
+    }
+</script>
+<?php
 include pathOf('includes/pageEnd.php');
 ?>
