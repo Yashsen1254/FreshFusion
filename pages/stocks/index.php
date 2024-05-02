@@ -1,5 +1,7 @@
 <?php
 require ('../../includes/init.php');
+$stocks = select("SELECT Stocks.Id, Stocks.CurrentQuantity, BranchDetails.Id AS 'BranchDetailsId', Products.Id AS 'ProductId' FROM Stocks INNER JOIN BranchDetails ON Stocks.BranchId = BranchDetails.Id INNER JOIN Products ON Stocks.ProductId = Products.Id");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -40,24 +42,29 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>10000</td>
-                                            <td>
-                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php">
-                                                    <div class="fa fa-edit">
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>
-                                            <a class="btn btn-danger btn-circle mb-2" href="#">
-                                                <div class="fa fa-trash">
-                                                </div>
-                                            </a>
-                                            </td>
-                                        </tr>
+                                    <?php foreach ($stocks as $stock): ?>
+                                            <tr>
+                                                <td><?= $index += 1 ?></td>
+                                                <td><?= $stock['BranchDetailsId'] ?></td>
+                                                <td><?= $stock['ProductId'] ?></td>
+                                                <td><?= $stock['CurrentQuantity'] ?></td>
+                                                <form action="./update.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $stock['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deleteStocks(<?= $stock['Id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
@@ -72,5 +79,22 @@ include pathOf('includes/navbar.php');
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/script.php');
+    ?>
+    <script>
+        function deleteStocks(Id) {
+            if (confirm("sure you want to delete this branch"));
+            $.ajax({
+                url: "../../api/stocks/delete.php",
+                method: "POST",
+                data: {
+                    Id: Id
+                },
+                success: function (response) {
+                    alert('BranchDetails Deleted');
+                }
+            })
+        }
+    </script>
+    <?php
     include pathOf('includes/pageEnd.php');
     ?>
