@@ -21,14 +21,15 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <input class="form-control" type="Hidden" id="Id" name="Id"
+                                    <input class="form-control" type="hidden" id="Id" name="Id"
                                         value="<?= $expanses['Id'] ?>">
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Add Branch</label>
                                         <div class="col-md-10">
                                             <select class="form-select" id="BranchId">
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?></option>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
+                                                    </option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -36,7 +37,8 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Name" autofocus>
+                                            <input class="form-control" type="text" id="Name" autofocus
+                                                value="<?= $expanses['Name'] ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -46,8 +48,8 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Amount</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="hunter2"
-                                                id="Amount">
+                                            <input class="form-control" type="number" id="Amount"
+                                                value="<?= $expanses['Amount'] ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -71,6 +73,7 @@ include pathOf('includes/script.php');
 <script>
     function updateData() {
         let data = {
+            Id: $("#Id").val(),
             BranchId: $("#BranchId").val(),
             Name: $("#Name").val(),
             Amount: $("#Amount").val(),

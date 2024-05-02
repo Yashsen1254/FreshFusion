@@ -19,12 +19,13 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-                                <div class="row mb-3">
+                                    <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Branch</label>
                                         <div class="col-md-10">
                                             <select class="form-select" id="BranchId">
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?></option>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
+                                                    </option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -42,8 +43,7 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Amount</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="hunter2"
-                                                id="Amount">
+                                            <input class="form-control" type="number" value="hunter2" id="Amount">
                                         </div>
                                     </div>
                                 </div>
