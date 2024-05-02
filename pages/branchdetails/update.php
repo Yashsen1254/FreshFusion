@@ -38,7 +38,8 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Address">
+                                            <input class="form-control" type="text" id="Address"
+                                                value="<?= $result['Address'] ?>">
                                         </div>
                                     </div>
 
@@ -48,7 +49,8 @@ include pathOf('includes/navbar.php');
                                         <label for="example-number-input"
                                             class="col-md-2 col-form-label">SquareFeet</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" id="Squarefeet">
+                                            <input class="form-control" type="number" id="Squarefeet"
+                                                value="<?= $result['Squarefeet'] ?>">
                                         </div>
                                     </div>
 
@@ -56,7 +58,8 @@ include pathOf('includes/navbar.php');
                                         <label for="example-password-input"
                                             class="col-md-2 col-form-label">Owner</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="OwnerName">
+                                            <input class="form-control" type="text" id="OwnerName"
+                                                value="<?= $result['OwnerName'] ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -76,9 +79,7 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
-include pathOf('includes/pageEnd.php');
 ?>
-
 <script>
     function updateData() {
         let data = {
@@ -100,3 +101,7 @@ include pathOf('includes/pageEnd.php');
         })
     }
 </script>
+
+<?php
+include pathOf('includes/pageEnd.php');
+?>
