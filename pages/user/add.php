@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$roles = select("SELECT * FROM Roles");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -20,27 +21,26 @@ include pathOf('includes/navbar.php');
                                 <div class="col-xl-6">
 
                                     <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Role</label>
+                                        <label class="col-md-2 col-form-label">Select Role</label>
                                         <div class="col-md-10">
-                                            <select class="form-select">
-                                                <option>Select</option>
-                                                <option>Large select</option>
-                                                <option>Small select</option>
+                                            <select class="form-select" id="roleId">
+                                                <?php foreach ($roles as $role): ?>
+                                                    <option value="<?= $role['Id'] ?>"><?= $role['Id'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text" autofocus id="Name">
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-number-input" class="col-md-2 col-form-label">Mobile</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
+                                            <input class="form-control" type="number" id="Mobile">
                                         </div>
                                     </div>
                                 </div>
@@ -48,20 +48,19 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
+                                            <input class="form-control" type="email" id="Email">
                                         </div>
                                     </div>
 
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="example-email-input">
+                                            <input class="form-control" type="text" id="Address">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="sendData()">Add</button>
                         </div>
                     </div>
                 </div>
@@ -76,5 +75,28 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
+?>
+<script>
+    function sendData() {
+        let data = {
+            roleId: $("#roleId").val(),
+            Name: $("#Name").val(),
+            Mobile: $("#Mobile").val(),
+            Email: $("#Email").val(),
+            Address: $("#Address").val(),
+        }
+
+        $.ajax({
+            url: "../../api/user/add.php",
+            method: "POST",
+            data: data,
+            success: function (response) {
+                alert("Users Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>
+<?php
 include pathOf('includes/pageEnd.php');
 ?>

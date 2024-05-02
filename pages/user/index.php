@@ -1,5 +1,7 @@
 <?php
 require ('../../includes/init.php');
+$users = select("SELECT Users.Id, Users.Name, Users.Mobile, Users.Email, Users.Address, Roles.Id AS 'RolesId' FROM Users INNER JOIN Roles ON Users.RoleId = Roles.Id");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -42,26 +44,31 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>Yash</td>
-                                            <td>123</td>
-                                            <td>Yash@gmail</td>
-                                            <td>Jamnagar</td>
-                                            <td>
-                                                <a class="btn btn-primary btn-circle mb-2" href="./update.php">
-                                                    <div class="fa fa-edit">
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td>
-                                            <a class="btn btn-danger btn-circle mb-2" href="#">
-                                                <div class="fa fa-trash">
-                                                </div>
-                                            </a>
-                                            </td>
-                                        </tr>
+                                    <?php foreach ($users as $user): ?>
+                                            <tr>
+                                                <td><?= $index += 1 ?></td>
+                                                <td><?= $user['RolesId'] ?></td>
+                                                <td><?= $user['Name'] ?></td>
+                                                <td><?= $user['Mobile'] ?></td>
+                                                <td><?= $user['Email'] ?></td>
+                                                <td><?= $user['Address'] ?></td>
+                                                <form action="./update.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $user['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deleteUser(<?= $user['Id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
@@ -76,5 +83,22 @@ include pathOf('includes/navbar.php');
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/script.php');
+    ?>
+    <script>
+        function deleteUser(Id) {
+            if (confirm("sure you want to delete this branch"));
+            $.ajax({
+                url: "../../api/user/delete.php",
+                method: "POST",
+                data: {
+                    Id: Id
+                },
+                success: function (response) {
+                    alert('BranchDetails Deleted');
+                }
+            })
+        }
+    </script>
+    <?php
     include pathOf('includes/pageEnd.php');
     ?>

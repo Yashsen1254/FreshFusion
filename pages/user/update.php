@@ -1,5 +1,8 @@
 <?php
 require ('../../includes/init.php');
+$roles = select("SELECT * FROM roles");
+$Id = $_POST["Id"];
+$users = selectOne("SELECT * FROM users WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -18,29 +21,31 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-
+                                    <input class="form-control" type="hidden" id="Id" name="Id"
+                                        value="<?= $users['Id'] ?>">
                                     <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Role</label>
+                                        <label class="col-md-2 col-form-label">Select Role</label>
                                         <div class="col-md-10">
-                                            <select class="form-select">
-                                                <option>Select</option>
-                                                <option>Large select</option>
-                                                <option>Small select</option>
+                                            <select class="form-select" id="roleId">
+                                                <?php foreach ($users as $user): ?>
+                                                    <option value="<?= $user['Id'] ?>"><?= $user['Id'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
+                                            <input class="form-control" type="text" value="<?= $user['Name'] ?>"
+                                                id="Name" autofocus>
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
                                         <label for="example-number-input" class="col-md-2 col-form-label">Mobile</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
+                                            <input class="form-control" type="number" value="<?= $user['Mobile'] ?>"
+                                                id="Mobile">
                                         </div>
                                     </div>
                                 </div>
@@ -48,20 +53,21 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
+                                            <input class="form-control" type="email" value="<?= $user['Email'] ?>"
+                                                id="Email">
                                         </div>
                                     </div>
 
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="example-email-input">
+                                            <input class="form-control" type="text" value="<?= $user['Address'] ?>"
+                                                id="Address">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#" class="btn btn-success mb-2 me-2">Add</a>
+                            <button class="btn btn-success mb-2 me-2" onclick="updateData()">Update</button>
                         </div>
                     </div>
                 </div>
@@ -76,5 +82,29 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
+?>
+<script>
+    function sendData() {
+        let data = {
+            Id: $("#Id").val(),
+            roleId: $("#roleId").val(),
+            Name: $("#Name").val(),
+            Mobile: $("#Mobile").val(),
+            Email: $("#Email").val(),
+            Address: $("#Address").val(),
+        }
+
+        $.ajax({
+            url: "../../api/user/update.php",
+            method: "POST",
+            data: data,
+            success: function (response) {
+                alert("Users Added");
+                window.location.href = './index.php';
+            }
+        })
+    }
+</script>
+<?php
 include pathOf('includes/pageEnd.php');
 ?>
