@@ -1,5 +1,7 @@
 <?php
 require ('../../includes/init.php');
+$purchases = select("SELECT Purchase.Id, Purchase.Quantity, BranchDetails.Id AS 'BranchDetailsId', Products.Id AS 'ProductId' FROM Purchase INNER JOIN BranchDetails ON Purchase.BranchId = BranchDetails.Id INNER JOIN Products ON Purchase.ProductId = Products.Id");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -15,7 +17,8 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Purchase</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
                                 </div>
@@ -39,24 +42,29 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>10000</td>
-                                            <td>
-                                            <a class="btn btn-primary btn-circle mb-2" href="./update.php">
-                                                <div class="fa fa-edit">
-                                                </div>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-danger btn-circle mb-2" href="#">
-                                                <div class="fa fa-trash">
-                                                </div>
-                                            </a>
-                                        </td>
-                                        </tr>
+                                        <?php foreach ($purchases as $purchase): ?>
+                                            <tr>
+                                                <td><?= $index += 1 ?></td>
+                                                <td><?= $purchase['BranchDetailsId'] ?></td>
+                                                <td><?= $purchase['ProductId'] ?></td>
+                                                <td><?= $purchase['Quantity'] ?></td>
+                                                <form action="./update.php" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $purchase['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deletePurchase(<?= $purchase['Id'] ?>)">
+                                                        <i class="fa fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
@@ -71,5 +79,22 @@ include pathOf('includes/navbar.php');
     <?php
     include pathOf('includes/footer.php');
     include pathOf('includes/script.php');
+    ?>
+    <script>
+        function deletePurchase(Id) {
+            if (confirm("sure you want to delete this branch"));
+            $.ajax({
+                url: "../../api/purchase/delete.php",
+                method: "POST",
+                data: {
+                    Id: Id
+                },
+                success: function (response) {
+                    alert('BranchDetails Deleted');
+                }
+            })
+        }
+    </script>
+    <?php
     include pathOf('includes/pageEnd.php');
     ?>
