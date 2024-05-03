@@ -28,32 +28,15 @@ include pathOf('includes/navbar.php');
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="selection-datatable" class="table dt-responsive nowrap w-100">
-                                    <thead>
-                                        <tr>
-                                            <th>Sr No.</th>
-                                            <th>Category</th>
-                                            <th>Name</th>
-                                            <th>Details</th>
-                                            <th>Price</th>
-                                            <th>ImageFileName</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-
-
-                                    <tbody>
-                                        <?php foreach ($products as $product): ?>
-                                            <tr>
+                                 <?php foreach ($products as $product): ?>
                                                 <div class="col-sm-6 col-lg-3">
                                                     <div class="card">
                                                         <div class="card-body p-lg-4">
                                                             <!-- Single Card -->
                                                             <div class="single-product-card">
                                                                 <div class="single-product-img">
-                                                                    <img src="<?= urlOf('assets/img/shop-img/2.png') ?>"
-                                                                        id="Image" alt="">
+                                                                    <img src="<?= urlOf('assets/img/uploads/') .$product['ImageFileName'] ?>"
+                                                                        id="Image" alt="" class="imagedisplay">
                                                                 </div>
                                                                 <div class="single-product-meta">
                                                                     <a class="product-title"><?= $product['Name'] ?></a>
@@ -86,11 +69,7 @@ include pathOf('includes/navbar.php');
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </tr>
                                         <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-
                             </div> <!-- end card body-->
                         </div> <!-- end card -->
                     </div>
