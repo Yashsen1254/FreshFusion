@@ -74,7 +74,6 @@
                                 </li>
                                 <li><a href="<?= urlOf('pages/expenses') ?>">Expenses</a></li>
                                 <li><a href="<?= urlOf('pages/user') ?>">Users</a></li>
-                                <li><a href="<?= urlOf('pages/modules') ?>">Modules</a></li>
                                 <li><a href="<?= urlOf('pages/city') ?>">City</a></li>
                                 <li><a href="<?= urlOf('pages/branchdetails') ?>">BranchDetails</a></li>
                                 <li><a href="<?= urlOf('pages/role') ?>">Roles</a></li>
