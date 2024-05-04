@@ -35,6 +35,7 @@ CREATE TABLE
         `Mobile` VARCHAR(255) NOT NULL,
         `Email` VARCHAR(255) NOT NULL,
         `Address` VARCHAR(255) NOT NULL,
+        `Password` VARCHAR(255) NOT NULL,
         FOREIGN KEY (`RoleId`) REFERENCES `Roles` (`Id`),
         FOREIGN KEY (`BranchId`) REFERENCES `BranchDetails` (`Id`)
     );
