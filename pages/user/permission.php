@@ -1,6 +1,6 @@
 <?php
 require ('../../includes/init.php');
-$roles = select("SELECT * FROM Roles");
+$modules = select("SELECT * FROM Modules");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -42,10 +42,10 @@ include pathOf('includes/navbar.php');
 
 
                                     <tbody>
-                                        <?php foreach ($roles as $role): ?>
+                                        <?php foreach ($modules as $module): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $role['Name'] ?></td>
+                                                <td><?= $module['Name'] ?></td>
                                                 <td><input class="form-check-input me-1" type="checkbox" value=""
                                                         id="firstCheckbox"></td>
                                                 <td><input class="form-check-input me-1" type="checkbox" value=""
