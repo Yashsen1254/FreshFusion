@@ -1,6 +1,6 @@
 <?php
 require ('../../includes/init.php');
-$purchases = select("SELECT Purchase.Id, Purchase.Quantity, BranchDetails.Id AS 'BranchDetailsId', Products.Id AS 'ProductId' FROM Purchase INNER JOIN BranchDetails ON Purchase.BranchId = BranchDetails.Id INNER JOIN Products ON Purchase.ProductId = Products.Id");
+$purchases = select("SELECT Purchase.Id, Purchase.Quantity, BranchDetails.OwnerName AS 'BranchDetailsOwnerName', Products.Name AS 'ProductName' FROM Purchase INNER JOIN BranchDetails ON Purchase.BranchId = BranchDetails.Id INNER JOIN Products ON Purchase.ProductId = Products.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -45,8 +45,8 @@ include pathOf('includes/navbar.php');
                                         <?php foreach ($purchases as $purchase): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $purchase['BranchDetailsId'] ?></td>
-                                                <td><?= $purchase['ProductId'] ?></td>
+                                                <td><?= $purchase['BranchDetailsOwnerName'] ?></td>
+                                                <td><?= $purchase['ProductName'] ?></td>
                                                 <td><?= $purchase['Quantity'] ?></td>
                                                 <form action="./update.php" method="post">
                                                     <td>

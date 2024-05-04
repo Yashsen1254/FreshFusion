@@ -1,6 +1,6 @@
 <?php
 require ('../../includes/init.php');
-$products = select("SELECT Products.Id, Products.Name, Products.Details, Products.Price, Products.ImageFileName, Categories.Id AS 'CategoryId' FROM Products INNER JOIN Categories ON Products.CategoryId = Categories.Id");
+$products = select("SELECT Products.Id, Products.Name, Products.Details, Products.Price, Products.ImageFileName, Categories.Name AS 'CategoryId' FROM Products INNER JOIN Categories ON Products.CategoryId = Categories.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');

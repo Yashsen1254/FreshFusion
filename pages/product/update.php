@@ -28,7 +28,7 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="categoryId">
                                                 <?php foreach ($categories as $category): ?>
-                                                    <option value="<?= $category['Id'] ?>"><?= $category['Id'] ?>
+                                                    <option value="<?= $category['Id'] ?>"><?= $category['Name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

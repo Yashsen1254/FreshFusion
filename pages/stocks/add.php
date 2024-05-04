@@ -25,7 +25,7 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="branchId">
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -44,7 +44,7 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="productId">
                                                 <?php foreach ($products as $product): ?>
-                                                    <option value="<?= $product['Id'] ?>"><?= $product['Id'] ?></option>
+                                                    <option value="<?= $product['Id'] ?>"><?= $product['Name'] ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>

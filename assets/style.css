@@ -8180,3 +8180,8 @@ label {
 .input-group-text {
   min-height: 100%;
 }
+
+.imagedisplay {
+  height: 100px; 
+  width: 100px;
+}
