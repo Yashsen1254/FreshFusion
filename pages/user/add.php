@@ -23,7 +23,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Role</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="roleId">
+                                            <select class="form-select" id="roleId" autofocus>
                                                 <?php foreach ($roles as $role): ?>
                                                     <option value="<?= $role['Id'] ?>"><?= $role['Id'] ?>
                                                     </option>
@@ -34,7 +34,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" autofocus id="Name">
+                                            <input class="form-control" type="text" id="Name">
                                         </div>
                                     </div><div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Mobile</label>

@@ -1,6 +1,6 @@
 <?php
 require ('../../includes/init.php');
-$expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.Id AS 'BranchDetailsId' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
+$expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.OwenerName AS 'BranchDetailsOwnerName' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -17,7 +17,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Expenses</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                            <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
@@ -45,10 +45,10 @@ include pathOf('includes/navbar.php');
                                         <?php foreach ($expenses as $expense): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $expense['BranchDetailsId'] ?></td>
+                                                <td><?= $expense['BranchDetailsOwnerName'] ?></td>
                                                 <td><?= $expense['Name'] ?></td>
                                                 <td><?= $expense['Amount'] ?></td>
-                                                <form action="./update.php" method="post">
+                                                <form action="./update" method="post">
                                                     <td>
                                                         <input type="hidden" name="Id" id="Id"
                                                             value="<?= $expense['Id'] ?>">
@@ -60,7 +60,7 @@ include pathOf('includes/navbar.php');
                                                 <td>
                                                     <button type="button" class="btn btn-danger btn-circle mb-2"
                                                         onclick="deleteExpense(<?= $expense['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -84,13 +84,13 @@ include pathOf('includes/navbar.php');
         function deleteExpense(Id) {
             if (confirm("sure you want to delete this branch"));
             $.ajax({
-                url: "../../api/expenses/delete.php",
+                url: "../../api/expenses/delete",
                 method: "POST",
                 data: {
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted');
+                    alert('Expenses Deleted');
                 }
             })
         }

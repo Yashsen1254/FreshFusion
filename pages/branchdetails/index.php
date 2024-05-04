@@ -18,7 +18,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Branch Details</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                            <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
@@ -51,7 +51,7 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $branchDetail['Address'] ?></td>
                                                 <td><?= $branchDetail['Squarefeet'] ?></td>
                                                 <td><?= $branchDetail['OwnerName'] ?></td>
-                                                <form action="./update.php" method="post">
+                                                <form action="./update" method="post">
                                                     <td>
                                                         <input type="hidden" name="Id" id="Id"
                                                             value="<?= $branchDetail['Id'] ?>">
@@ -87,7 +87,7 @@ include pathOf('includes/navbar.php');
         function deleteBranch(Id) {
             if (confirm("sure you want to delete this branch"));
             $.ajax({
-                url: "../../api/branchdetails/delete.php",
+                url: "../../api/branchdetails/delete",
                 method: "POST",
                 data: {
                     Id: Id

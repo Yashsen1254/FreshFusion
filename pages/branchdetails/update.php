@@ -16,7 +16,7 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Branch Details</h4>
+                                <h4>Update Branch Details</h4>
                             </div>
 
                             <div class="row">
@@ -26,7 +26,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">City</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="cityId">
+                                            <select class="form-select" id="cityId" autofocus>
                                                 <?php foreach ($cities as $city): ?>
                                                     <option value="<?= $city['Id'] ?>"><?= $city['Name'] ?></option>
                                                 <?php endforeach; ?>
@@ -91,12 +91,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/branchdetails/update.php",
+            url: "../../api/branchdetails/update",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("BranchDetails Updated");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

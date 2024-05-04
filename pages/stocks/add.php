@@ -23,7 +23,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Branch</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="branchId">
+                                            <select class="form-select" id="branchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
                                                     <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
                                                     </option>

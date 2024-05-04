@@ -49,14 +49,14 @@ include pathOf('includes/pageEnd.php');
         var Name = $("#Name").val();
 
         $.ajax({
-            url: "../../api/categories/add.php",
+            url: "../../api/categories/add",
             method: "POST",
             data: {
                 Name: Name,
             },
             success: function (response) {
                 alert("Categorie Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

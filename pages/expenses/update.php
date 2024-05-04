@@ -16,7 +16,7 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Expenses</h4>
+                                <h4>Update Expenses</h4>
                             </div>
 
                             <div class="row">
@@ -26,9 +26,10 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Add Branch</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="BranchId">
+                                            <select class="form-select" id="BranchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>">
+                                                        <?= $branchDetail['OwnerName'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -37,7 +38,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Name" autofocus
+                                            <input class="form-control" type="text" id="Name"
                                                 value="<?= $expanses['Name'] ?>">
                                         </div>
                                     </div>
@@ -80,12 +81,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/expenses/update.php",
+            url: "../../api/expenses/update",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("BranchDetails Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

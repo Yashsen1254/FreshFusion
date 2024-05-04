@@ -17,7 +17,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Stock</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                            <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
@@ -48,7 +48,7 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $stock['BranchDetailsOwnerName'] ?></td>
                                                 <td><?= $stock['ProductName'] ?></td>
                                                 <td><?= $stock['CurrentQuantity'] ?></td>
-                                                <form action="./update.php" method="post">
+                                                <form action="./update" method="post">
                                                     <td>
                                                         <input type="hidden" name="Id" id="Id"
                                                             value="<?= $stock['Id'] ?>">
@@ -84,13 +84,13 @@ include pathOf('includes/navbar.php');
         function deleteStocks(Id) {
             if (confirm("sure you want to delete this branch"));
             $.ajax({
-                url: "../../api/stocks/delete.php",
+                url: "../../api/stocks/delete",
                 method: "POST",
                 data: {
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted');
+                    alert('Stock Deleted');
                 }
             })
         }

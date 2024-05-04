@@ -22,7 +22,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Branch</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="BranchId">
+                                            <select class="form-select" id="BranchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
                                                     <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
                                                     </option>
@@ -33,7 +33,7 @@ include pathOf('includes/navbar.php');
                                     <div class="mb-3 row">
                                         <label for="example-email-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="text" id="Name" autofocus>
+                                            <input class="form-control" type="text" id="Name" >
                                         </div>
                                     </div>
                                 </div>
@@ -73,12 +73,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/expenses/add.php",
+            url: "../../api/expenses/add",
             method: "POST",
             data: data,
             success: function (response) {
-                alert("BranchDetails Added");
-                window.location.href = './index.php';
+                alert("Expenses Added");
+                window.location.href = './index';
             }
         })
     }

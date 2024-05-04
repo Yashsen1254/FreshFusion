@@ -1,5 +1,7 @@
 <?php
 require ('../../includes/init.php');
+$modules = select("SELECT * FROM Modules");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -16,46 +18,38 @@ include pathOf('includes/navbar.php');
                                 <h4>Add Details</h4>
                             </div>
 
-                            <div class="row">
-                                <div class="col-xl-6">
-                                    <div class="mb-3 row">
-                                        <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="text" value="Hello World"
-                                                id="example-text-input">
-                                        </div>
-                                    </div>
+                            <table id="selection-datatable" class="table dt-responsive nowrap w-100">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th>Module</th>
+                                        <th>Add Permission</th>
+                                        <th>Edit Permission</th>
+                                        <th>View Permission</th>
+                                        <th>Delete Permission</th>
+                                    </tr>
+                                </thead>
 
-                                    
-                                    <div class="mb-3 row">
-                                        <label for="example-number-input" class="col-md-2 col-form-label">Number</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="number" value="42"
-                                                id="example-number-input">
-                                        </div>
-                                    </div>
+                                <tbody>
+                                    <?php foreach ($modules as $module) : ?>
+                                    <tr>
+                                        <td><?= $index += 1 ?></td>
+                                        <td><?= $module['Name'] ?></td>
+                                        <td><input class="form-check-input me-1" type="checkbox" value=""
+                                                id="firstCheckbox"></td>
+                                        <td><input class="form-check-input me-1" type="checkbox" value=""
+                                                id="firstCheckbox"></td>
+                                        <td><input class="form-check-input me-1" type="checkbox" value=""
+                                                id="firstCheckbox"></td>
+                                        <td><input class="form-check-input me-1" type="checkbox" value=""
+                                                id="firstCheckbox"></td>
+                                    </tr>
+                                    <?php endforeach; ?>    
+                                </tbody>
+                            </table>
 
-                                </div>
-                                <div class="col-xl-6">
-                                <div class="mb-3 row">
-                                        <label for="example-email-input" class="col-md-2 col-form-label">Email</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="email" value="email@example.com"
-                                                id="example-email-input">
-                                        </div>
-                                    </div>
 
-                                    <div class="mb-3 row">
-                                        <label for="example-password-input"
-                                            class="col-md-2 col-form-label">Password</label>
-                                        <div class="col-md-10">
-                                            <input class="form-control" type="password" value="hunter2"
-                                                id="example-password-input">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="./add.php" class="btn btn-success mb-2 me-2">Add</a>
+
                         </div>
                     </div>
                 </div>
@@ -65,7 +59,7 @@ include pathOf('includes/navbar.php');
     </div>
 </div>
 
-                
+
 
 <?php
 include pathOf('includes/footer.php');

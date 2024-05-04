@@ -98,15 +98,14 @@ include pathOf('includes/script.php');
         form.append('Image', $('#Image')[0].files[0]);
         
         $.ajax({
-            url: '../../api/product/update.php',
+            url: '../../api/product/update',
             method: 'POST',
             data: form,
             processData: false,
             contentType: false,
             success: function (response) {
-                console.log(response);
-                if (response.success !== true)
-                    return;
+                alert("Product Updated");
+                window.location.href = './index';
             }
         })
     }

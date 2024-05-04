@@ -27,7 +27,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Branch</label>
                                         <div class="col-md-10">
-                                        <select class="form-select" id="branchId">
+                                        <select class="form-select" id="branchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
                                                     <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
                                                     </option>
@@ -83,12 +83,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/stocks/update.php",
+            url: "../../api/stocks/update",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("Stocks Updated");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

@@ -79,26 +79,23 @@ include pathOf('includes/script.php');
 <script>
     function sendData() {
         var form = new FormData();
-            form.append('categoryId', $('#categoryId').val());
-            form.append('Name', $('#Name').val());
-            form.append('Details', $('#Details').val());
-            form.append('Price', $('#Price').val());
-            form.append('Image', $('#Image')[0].files[0]);
+        form.append('categoryId', $('#categoryId').val());
+        form.append('Name', $('#Name').val());
+        form.append('Details', $('#Details').val());
+        form.append('Price', $('#Price').val());
+        form.append('Image', $('#Image')[0].files[0]);
 
-            $.ajax({
-                url: '../../api/product/add.php',
-                method: 'POST',
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log(response);
-                    if (response.success !== true)
-                        return;
-
-                    window.location.href = './index'
-                }
-            })
+        $.ajax({
+            url: '../../api/product/add',
+            method: 'POST',
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                alert("Product Added");
+                window.location.href = './index';
+            }
+        })
     }
 </script>
 <?php

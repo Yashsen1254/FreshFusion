@@ -1,15 +1,10 @@
 <?php
 require ('../../includes/init.php');
-include pathOf('includes/header.php');
-include pathOf('includes/navbar.php');
-?>
-
-<?php
-
 $Id = $_POST["Id"];
 $querry = "SELECT * FROM categories WHERE Id = $Id";
 $categories = selectOne($querry);
-
+include pathOf('includes/header.php');
+include pathOf('includes/navbar.php');
 ?>
 
 <div class="main-content">
@@ -52,7 +47,6 @@ $categories = selectOne($querry);
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
-include pathOf('includes/pageEnd.php');
 ?>
 
 <script>
@@ -61,7 +55,7 @@ include pathOf('includes/pageEnd.php');
         var Name = $("#Name").val();
 
         $.ajax({
-            url: "../../api/categories/update.php",
+            url: "../../api/categories/update",
             method: "POST",
             data: {
                 Id: Id,
@@ -69,8 +63,12 @@ include pathOf('includes/pageEnd.php');
             },
             success: function (response) {
                 alert("Categorie Updated");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
 </script>
+
+<?php
+include pathOf('includes/pageEnd.php');
+?>

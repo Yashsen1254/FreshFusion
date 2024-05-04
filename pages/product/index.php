@@ -17,7 +17,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Product</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                            <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
@@ -46,7 +46,7 @@ include pathOf('includes/navbar.php');
                                             </ul>
                                             <div class="d-flex justify-content-between align-items-center mt-4">
                                                 <h4 class="product-price"><?= $product['Price'] ?></h4>
-                                                <form action="./update.php" method="post">
+                                                <form action="./update" method="post">
                                                     <input type="hidden" name="Id" id="Id" value="<?= $product['Id'] ?>">
                                                     <button type="submit" class="btn btn-primary btn-circle mb-2">
                                                         <i class="fa fa-edit"></i>
@@ -54,7 +54,7 @@ include pathOf('includes/navbar.php');
                                                 </form>
                                                 <button type="button" class="btn btn-danger btn-circle mb-2"
                                                     onclick="deleteProducts(<?= $product['Id'] ?>)">
-                                                    <i class="fa fa-edit"></i>
+                                                    <i class="fa fa-trash"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@ include pathOf('includes/navbar.php');
         function deleteProducts(Id) {
             if (confirm("sure you want to delete this branch"));
             $.ajax({
-                url: "../../api/product/delete.php",
+                url: "../../api/product/delete",
                 method: "POST",
                 data: {
                     Id: Id

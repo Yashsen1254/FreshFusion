@@ -1,15 +1,10 @@
 <?php
 require ('../../includes/init.php');
-include pathOf('includes/header.php');
-include pathOf('includes/navbar.php');
-?>
-
-<?php
-
 $Id = $_POST["Id"];
 $querry = "SELECT * FROM city WHERE Id = $Id";
 $cities = selectOne($querry);
-
+include pathOf('includes/header.php');
+include pathOf('includes/navbar.php');
 ?>
 
 <div class="main-content">
@@ -53,16 +48,14 @@ $cities = selectOne($querry);
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
-include pathOf('includes/pageEnd.php');
 ?>
-
 <script>
     function updateData() {
         var Id = $("#Id").val();
         var Name = $("#Name").val();
 
         $.ajax({
-            url: "../../api/city/update.php",
+            url: "../../api/city/update",
             method: "POST",
             data: {
                 Id: Id,
@@ -70,8 +63,11 @@ include pathOf('includes/pageEnd.php');
             },
             success: function (response) {
                 alert("City Updated");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
 </script>
+<?php
+include pathOf('includes/pageEnd.php');
+?>

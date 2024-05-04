@@ -42,7 +42,6 @@ include pathOf('includes/navbar.php');
 <?php
 include pathOf('includes/footer.php');
 include pathOf('includes/script.php');
-include pathOf('includes/pageEnd.php');
 ?>
 
 <script>
@@ -50,15 +49,19 @@ include pathOf('includes/pageEnd.php');
         var name = $("#name").val();
 
         $.ajax({
-            url: "../../api/city/add.php",
+            url: "../../api/city/add",
             method: "POST",
             data: {
                 name: name,
             },
             success: function (response) {
                 alert("City Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
 </script>
+
+<?php
+include pathOf('includes/pageEnd.php');
+?>

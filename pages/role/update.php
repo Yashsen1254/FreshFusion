@@ -20,7 +20,7 @@ $roles = selectOne($querry);
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Role</h4>
+                                <h4>Update Role</h4>
                             </div>
 
                             <div class="row">
@@ -31,7 +31,7 @@ $roles = selectOne($querry);
                                         <label for="example-text-input" class="col-md-2 col-form-label">Name</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="Name" name="Name"
-                                                value="<?= $roles['Name'] ?>">
+                                                value="<?= $roles['Name'] ?>" autofocus>
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +61,7 @@ include pathOf('includes/pageEnd.php');
         var Name = $("#Name").val();
 
         $.ajax({
-            url: "../../api/role/update.php",
+            url: "../../api/role/update",
             method: "POST",
             data: {
                 Id: Id,
@@ -69,7 +69,7 @@ include pathOf('includes/pageEnd.php');
             },
             success: function (response) {
                 alert("Role Updated");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

@@ -22,7 +22,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select City</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="cityId">
+                                            <select class="form-select" id="cityId" autofocus>
                                                 <?php foreach ($cities as $city): ?>
                                                     <option value="<?= $city['Id'] ?>"><?= $city['Name'] ?></option>
                                                 <?php endforeach; ?>
@@ -80,12 +80,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/branchdetails/add.php",
+            url: "../../api/branchdetails/add",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("BranchDetails Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }

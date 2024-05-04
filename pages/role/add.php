@@ -49,14 +49,14 @@ include pathOf('includes/script.php');
         var Name = $("#Name").val();
 
         $.ajax({
-            url: "../../api/role/add.php",
+            url: "../../api/role/add",
             method: "POST",
             data: {
                 Name: Name,
             },
             success: function (response) {
                 alert("Role Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
