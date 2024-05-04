@@ -8,9 +8,10 @@ $Name = $_POST["Name"];
 $Mobile = $_POST["Mobile"];
 $Email = $_POST["Email"];
 $Address = $_POST["Address"];
+$Password = $_POST["Password"];
 
-$query = "UPDATE users SET roleId=?, Name=?, Mobile=?, Email=?, Address=? WHERE Id=?";
-$param = [$roleId, $Name, $Mobile, $Email, $Address, $Id];
+$query = "UPDATE users SET roleId=?, Name=?, Mobile=?, Email=?, Address=?, Password=? WHERE Id=?";
+$param = [$roleId, $Name, $Mobile, $Email, $Address,$Password, $Id];
 
 execute($query, $param);
 
