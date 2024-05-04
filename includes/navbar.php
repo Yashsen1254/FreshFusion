@@ -33,7 +33,7 @@
                             <div class="dropdown-menu profile dropdown-menu-right">
                                 <!-- User Profile Area -->
                                 <div class="user-profile-area">
-                                    <a href="#" class="dropdown-item"><i class="bx bx-user font-15"
+                                    <a href="<?= urlOf('pages/user') ?>" class="dropdown-item"><i class="bx bx-user font-15"
                                             aria-hidden="true"></i>Users</a>
                                     <a href="#" class="dropdown-item"><i class="bx bx-power-off font-15"
                                             aria-hidden="true"></i> Sign-out</a>
