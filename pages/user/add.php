@@ -36,11 +36,10 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" autofocus id="Name">
                                         </div>
-                                    </div>
-                                    <div class="mb-3 row">
-                                        <label for="example-number-input" class="col-md-2 col-form-label">Mobile</label>
+                                    </div><div class="mb-3 row">
+                                        <label for="example-text-input" class="col-md-2 col-form-label">Mobile</label>
                                         <div class="col-md-10">
-                                            <input class="form-control" type="number" id="Mobile">
+                                            <input class="form-control" type="text" id="Mobile">
                                         </div>
                                     </div>
                                 </div>

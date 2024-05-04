@@ -95,12 +95,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/user/update.php",
+            url: "../../api/user/update",
             method: "POST",
             data: data,
             success: function (response) {
-                alert("Users Added");
-                window.location.href = './index.php';
+                alert("Users Updated");
+                window.location.href = './index';
             }
         })
     }

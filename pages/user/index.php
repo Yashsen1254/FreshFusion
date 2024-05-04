@@ -17,7 +17,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">User</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add.php"
+                                            <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
                                         </ol>
                                     </div>
@@ -37,8 +37,8 @@ include pathOf('includes/navbar.php');
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Address</th>
+                                            <th>Permission</th>
                                             <th>Modify</th>
-                                            <th>Delete</th>
                                         </tr>
                                     </thead>
 
@@ -52,7 +52,16 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $user['Mobile'] ?></td>
                                                 <td><?= $user['Email'] ?></td>
                                                 <td><?= $user['Address'] ?></td>
-                                                <form action="./update.php" method="post">
+                                                <form action="./permission" method="post">
+                                                    <td>
+                                                        <input type="hidden" name="Id" id="Id"
+                                                            value="<?= $user['Id'] ?>">
+                                                        <button type="submit" class="btn btn-success btn-circle mb-2">
+                                                            <i class="fa fa-lock"></i>
+                                                        </button>
+                                                    </td>
+                                                </form>
+                                                <form action="./update" method="post">
                                                     <td>
                                                         <input type="hidden" name="Id" id="Id"
                                                             value="<?= $user['Id'] ?>">
@@ -61,12 +70,6 @@ include pathOf('includes/navbar.php');
                                                         </button>
                                                     </td>
                                                 </form>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteUser(<?= $user['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -88,7 +91,7 @@ include pathOf('includes/navbar.php');
         function deleteUser(Id) {
             if (confirm("sure you want to delete this branch"));
             $.ajax({
-                url: "../../api/user/delete.php",
+                url: "../../api/user/delete",
                 method: "POST",
                 data: {
                     Id: Id
