@@ -1,5 +1,8 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Sales',1);
+if($permissions['AddPermission'] == 1)
+    header('Location: ./index');
 $branchDetails = select("SELECT * FROM branchdetails");
 $products = select("SELECT * FROM products");
 include pathOf('includes/header.php');

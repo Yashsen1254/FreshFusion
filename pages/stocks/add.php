@@ -1,5 +1,10 @@
 <?php
 require ('../../includes/init.php');
+
+$permissions = authenticate('Stocks', 1);
+if ($permissions['AddPermission'] == 1)
+    header('Location: ./index');
+
 $branchDetails = select("SELECT * FROM branchdetails");
 $products = select("SELECT * FROM products");
 include pathOf('includes/header.php');
@@ -25,7 +30,8 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="branchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>">
+                                                        <?= $branchDetail['OwnerName'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

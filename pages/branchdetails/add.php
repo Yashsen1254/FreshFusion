@@ -1,5 +1,10 @@
 <?php
 require ('../../includes/init.php');
+
+$permissions = authenticate('BranchDetails', 1);
+if ($permissions['AddPermission'] != 1)
+    header('Location: ./index');
+
 $cities = select("SELECT * FROM City");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');

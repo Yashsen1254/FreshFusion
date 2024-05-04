@@ -1,5 +1,10 @@
 <?php
 require ('../../includes/init.php');
+
+$permissions = authenticate('Products', 1);
+if ($permissions['AddPermission'] != 1)
+    header('Location: ./index');
+
 $categories = select("SELECT * FROM Categories");
 $products = selectOne("SELECT * FROM Products WHERE Id = $Id");
 include pathOf('includes/header.php');
@@ -26,8 +31,8 @@ include pathOf('includes/navbar.php');
                                             <select class="form-select" id="categoryId" autofocus>
                                                 <?php foreach ($categories as $category): ?>
                                                     <option value="<?= $category['Id'] ?>"
-                                                    <?= $products['CategoryId'] == $category['Id'] ? 'selected' : '' ?>>
-                                                    <?= $category['Name'] ?>
+                                                        <?= $products['CategoryId'] == $category['Id'] ? 'selected' : '' ?>>
+                                                        <?= $category['Name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

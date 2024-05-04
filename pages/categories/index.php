@@ -1,15 +1,10 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Categories', 1);
+$categories = select("SELECT * FROM categories");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
-?>
-
-<?php
-
-$query = "SELECT * FROM categories";
-$categories = select($query);
-$index = 0;
-
 ?>
 
 <div class="main-content">
@@ -24,8 +19,10 @@ $index = 0;
                                     <h4 class="mb-0">Categories</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php } ?>
                                         </ol>
                                     </div>
                                 </div>

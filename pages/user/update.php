@@ -65,6 +65,13 @@ include pathOf('includes/navbar.php');
                                                 id="Address">
                                         </div>
                                     </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="password" value="<?= $user['Password'] ?>"
+                                            id="Password">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <button class="btn btn-success mb-2 me-2" onclick="updateData()">Update</button>
@@ -92,6 +99,7 @@ include pathOf('includes/script.php');
             Mobile: $("#Mobile").val(),
             Email: $("#Email").val(),
             Address: $("#Address").val(),
+            Password: $("#Password").val(),
         }
 
         $.ajax({

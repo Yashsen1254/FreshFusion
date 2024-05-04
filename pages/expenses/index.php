@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Expenses', 1);
 $expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -17,8 +18,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Expenses</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php } ?>
                                         </ol>
                                     </div>
                                 </div>

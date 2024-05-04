@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$modules = select("SELECT * FROM Modules");
+$id = $_POST['Id'];
+$permissions = select("SELECT modules.Name, permissions.AddPermission, permissions.EditPermission, permissions.DeletePermission, permissions.ViewPermission FROM permissions INNER JOIN users ON users.Id = permissions.UserId INNER JOIN modules ON modules.Id = permissions.ModuleId WHERE permissions.UserId = ?", [$id]);
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -32,28 +33,26 @@ include pathOf('includes/navbar.php');
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Role</th>
+                                            <th>Modules</th>
                                             <th>Add Permission</th>
                                             <th>Edit Permission</th>
                                             <th>View Permission</th>
                                             <th>Delete Permission</th>
                                         </tr>
                                     </thead>
-
-
                                     <tbody>
-                                        <?php foreach ($modules as $module): ?>
+                                        <?php foreach ($permissions as $permission): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $module['Name'] ?></td>
-                                                <td><input class="form-check-input me-1" type="checkbox" value=""
-                                                        id="firstCheckbox"></td>
-                                                <td><input class="form-check-input me-1" type="checkbox" value=""
-                                                        id="firstCheckbox"></td>
-                                                <td><input class="form-check-input me-1" type="checkbox" value=""
-                                                        id="firstCheckbox"></td>
-                                                <td><input class="form-check-input me-1" type="checkbox" value=""
-                                                        id="firstCheckbox"></td>
+                                                <td><?= $permission['Name'] ?></td>
+                                                <td><input class="form-check-input me-1" <?= $permission['AddPermission'] == 1 ? 'checked' : '' ?> type="checkbox" id="firstCheckbox">
+                                                </td>
+                                                <td><input class="form-check-input me-1" <?= $permission['EditPermission'] == 1 ? 'checked' : '' ?> type="checkbox" id="firstCheckbox">
+                                                </td>
+                                                <td><input class="form-check-input me-1" <?= $permission['ViewPermission'] == 1 ? 'checked' : '' ?> type="checkbox" id="firstCheckbox">
+                                                </td>
+                                                <td><input class="form-check-input me-1" <?= $permission['DeletePermission'] == 1 ? 'checked' : '' ?> type="checkbox" id="firstCheckbox">
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

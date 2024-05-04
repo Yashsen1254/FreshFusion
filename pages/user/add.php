@@ -1,5 +1,10 @@
 <?php
 require ('../../includes/init.php');
+
+$permissions = authenticate('Users', 1);
+if ($permissions['AddPermission'] != 1)
+    header('Location: ./index');
+
 $roles = select("SELECT * FROM Roles");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -36,7 +41,8 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="Name">
                                         </div>
-                                    </div><div class="mb-3 row">
+                                    </div>
+                                    <div class="mb-3 row">
                                         <label for="example-text-input" class="col-md-2 col-form-label">Mobile</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="Mobile">
@@ -55,6 +61,12 @@ include pathOf('includes/navbar.php');
                                         <label for="example-email-input" class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="Address">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
+                                        <div class="col-md-10">
+                                            <input class="form-control" type="password" id="Password">
                                         </div>
                                     </div>
                                 </div>
@@ -83,6 +95,7 @@ include pathOf('includes/script.php');
             Mobile: $("#Mobile").val(),
             Email: $("#Email").val(),
             Address: $("#Address").val(),
+            Password: $("#Password").val(),
         }
 
         $.ajax({

@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Products',1);
 $products = select("SELECT Products.Id, Products.Name, Products.Details, Products.Price, Products.ImageFileName, Categories.Name AS 'CategoryName' FROM Products INNER JOIN Categories ON Products.CategoryId = Categories.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -17,8 +18,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Product</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
+                                            <?php if($permissions['AddPermission'] == 1) { ?>
                                             <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
+                                                    <?php } ?>
                                         </ol>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Users',1);
 $users = select("SELECT Users.Id, Users.Name, Users.Mobile, Users.Email, Users.Address, Roles.Name AS 'RolesName', BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Users INNER JOIN Roles ON Users.RoleId = Roles.Id INNER JOIN BranchDetails ON Users.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -17,8 +18,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">User</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
+                                            <?php if($permissions['AddPermission'] == 1) { ?>
                                             <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
+                                                    <?php } ?>
                                         </ol>
                                     </div>
                                 </div>
@@ -38,6 +41,7 @@ include pathOf('includes/navbar.php');
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Address</th>
+                                            <th>Password</th>
                                             <th>Permission</th>
                                             <th>Modify</th>
                                         </tr>
@@ -54,6 +58,7 @@ include pathOf('includes/navbar.php');
                                                 <td><?= $user['Mobile'] ?></td>
                                                 <td><?= $user['Email'] ?></td>
                                                 <td><?= $user['Address'] ?></td>
+                                                <td><?= $user['Password'] ?></td>
                                                 <form action="./permission" method="post">
                                                     <td>
                                                         <input type="hidden" name="Id" id="Id"

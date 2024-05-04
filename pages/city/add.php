@@ -1,5 +1,10 @@
 <?php
 require ('../../includes/init.php');
+
+$permissions = authenticate('City', 1);
+if ($permissions['AddPermission'] != 1)
+    header('Location: ./index');
+
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>

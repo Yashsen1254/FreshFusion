@@ -1,5 +1,6 @@
 <?php
 require ('../../includes/init.php');
+$permissions = authenticate('Roles', 1);
 $query = "SELECT * FROM roles";
 $roles = select($query);
 $index = 0;
@@ -19,8 +20,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Role</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
+                                            <?php if($permissions['AddPermission'] == 1) { ?>
                                             <li class="breadcrumb-item active"> <a href="./add"
                                                     class="btn btn-success mb-2 me-2">Add</a> </li>
+                                                    <?php } ?>
                                         </ol>
                                     </div>
                                 </div>
