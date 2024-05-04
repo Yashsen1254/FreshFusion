@@ -1,8 +1,7 @@
 <?php
 require ('../../includes/init.php');
 $Id = $_POST["Id"];
-$querry = "SELECT * FROM city WHERE Id = $Id";
-$cities = selectOne($querry);
+$cities = selectOne("SELECT * FROM city WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>

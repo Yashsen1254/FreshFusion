@@ -74,7 +74,7 @@ include pathOf('includes/navbar.php');
     ?>
     <script>
         function deleteProducts(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this Product"));
             $.ajax({
                 url: "../../api/product/delete",
                 method: "POST",

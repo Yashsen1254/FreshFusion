@@ -1,6 +1,6 @@
 <?php
 require ('../../includes/init.php');
-$expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.OwenerName AS 'BranchDetailsOwnerName' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
+$expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -82,7 +82,7 @@ include pathOf('includes/navbar.php');
     ?>
     <script>
         function deleteExpense(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this expenses"));
             $.ajax({
                 url: "../../api/expenses/delete",
                 method: "POST",

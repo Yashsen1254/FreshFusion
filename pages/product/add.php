@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
 $categories = select("SELECT * FROM Categories");
+$products = selectOne("SELECT * FROM Products WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -24,7 +25,9 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="categoryId" autofocus>
                                                 <?php foreach ($categories as $category): ?>
-                                                    <option value="<?= $category['Id'] ?>"><?= $category['Name'] ?>
+                                                    <option value="<?= $category['Id'] ?>"
+                                                    <?= $products['CategoryId'] == $category['Id'] ? 'selected' : '' ?>>
+                                                    <?= $category['Name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

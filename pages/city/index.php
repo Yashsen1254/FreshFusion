@@ -1,15 +1,9 @@
 <?php
 require ('../../includes/init.php');
+$cities = select("SELECT * FROM City");
+$index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
-?>
-
-<?php
-
-$query = "SELECT * FROM city";
-$cities = select($query);
-$index = 0;
-
 ?>
 
 <div class="main-content">
@@ -84,7 +78,7 @@ $index = 0;
     ?>
     <script>
         function deleteCity(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this city"));
             $.ajax({
                 url: "../../api/city/delete",
                 method: "POST",

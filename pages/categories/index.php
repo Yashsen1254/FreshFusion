@@ -85,7 +85,7 @@ $index = 0;
     ?>
     <script>
         function deleteCategory(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this category"));
             $.ajax({
                 url: "../../api/categories/delete",
                 method: "POST",

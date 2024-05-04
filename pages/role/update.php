@@ -1,16 +1,11 @@
 <?php
 require ('../../includes/init.php');
+$Id = $_POST["Id"];
+$roles = selectOne("SELECT * FROM roles WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
 
-<?php
-
-$Id = $_POST["Id"];
-$querry = "SELECT * FROM roles WHERE Id = $Id";
-$roles = selectOne($querry);
-
-?>
 <div class="main-content">
     <div class="content-wraper-area">
         <!-- Basic Form area Start -->

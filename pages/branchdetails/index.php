@@ -85,7 +85,7 @@ include pathOf('includes/navbar.php');
 
     <script>
         function deleteBranch(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("are you sure you want to delete this branch"));
             $.ajax({
                 url: "../../api/branchdetails/delete",
                 method: "POST",

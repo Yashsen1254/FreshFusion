@@ -83,12 +83,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/purchase/update.php",
+            url: "../../api/purchase/update",
             method: "POST",
             data: data,
             success: function (response) {
-                alert("Purchase Added");
-                window.location.href = './index.php';
+                alert("Purchase Updated");
+                window.location.href = './index';
             }
         })
     }

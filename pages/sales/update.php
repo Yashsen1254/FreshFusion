@@ -17,7 +17,7 @@ include pathOf('includes/navbar.php');
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h4>Add Sales</h4>
+                                <h4>Update Sales</h4>
                             </div>
 
                             <div class="row">

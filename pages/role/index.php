@@ -79,7 +79,7 @@ include pathOf('includes/navbar.php');
     ?>
     <script>
         function deleteRole(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this role"));
             $.ajax({
                 url: "../../api/role/delete",
                 method: "POST",

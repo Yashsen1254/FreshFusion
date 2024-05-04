@@ -2,7 +2,7 @@
 require ('../../includes/init.php');
 $cities = select("SELECT * FROM City");
 $Id = $_POST["Id"];
-$result = selectOne("SELECT * FROM branchdetails WHERE Id = $Id");
+$branchdetails = selectOne("SELECT * FROM branchdetails WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -22,7 +22,7 @@ include pathOf('includes/navbar.php');
                             <div class="row">
                                 <div class="col-xl-6">
                                     <input class="form-control" type="Hidden" id="Id" name="Id"
-                                        value="<?= $result['Id'] ?>">
+                                        value="<?= $branchdetails['Id'] ?>">
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">City</label>
                                         <div class="col-md-10">
@@ -39,7 +39,7 @@ include pathOf('includes/navbar.php');
                                             class="col-md-2 col-form-label">Address</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="Address"
-                                                value="<?= $result['Address'] ?>">
+                                                value="<?= $branchdetails['Address'] ?>">
                                         </div>
                                     </div>
 
@@ -50,7 +50,7 @@ include pathOf('includes/navbar.php');
                                             class="col-md-2 col-form-label">SquareFeet</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="number" id="Squarefeet"
-                                                value="<?= $result['Squarefeet'] ?>">
+                                                value="<?= $branchdetails['Squarefeet'] ?>">
                                         </div>
                                     </div>
 
@@ -59,7 +59,7 @@ include pathOf('includes/navbar.php');
                                             class="col-md-2 col-form-label">Owner</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="text" id="OwnerName"
-                                                value="<?= $result['OwnerName'] ?>">
+                                                value="<?= $branchdetails['OwnerName'] ?>">
                                         </div>
                                     </div>
                                 </div>

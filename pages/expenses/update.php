@@ -24,7 +24,7 @@ include pathOf('includes/navbar.php');
                                     <input class="form-control" type="hidden" id="Id" name="Id"
                                         value="<?= $expanses['Id'] ?>">
                                     <div class="row mb-3">
-                                        <label class="col-md-2 col-form-label">Add Branch</label>
+                                        <label class="col-md-2 col-form-label">Update Branch</label>
                                         <div class="col-md-10">
                                             <select class="form-select" id="BranchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
@@ -85,7 +85,7 @@ include pathOf('includes/script.php');
             method: "POST",
             data: data,
             success: function (response) {
-                alert("BranchDetails Added");
+                alert("Expenses Updated");
                 window.location.href = './index';
             }
         })

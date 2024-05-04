@@ -82,7 +82,7 @@ include pathOf('includes/navbar.php');
     ?>
     <script>
         function deleteSales(Id) {
-            if (confirm("sure you want to delete this branch"));
+            if (confirm("sure you want to delete this Sales"));
             $.ajax({
                 url: "../../api/sales/delete",
                 method: "POST",

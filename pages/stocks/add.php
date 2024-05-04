@@ -77,12 +77,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/stocks/add.php",
+            url: "../../api/stocks/add",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("Stocks Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
