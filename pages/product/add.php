@@ -22,7 +22,7 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Categorie</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="categoryId">
+                                            <select class="form-select" id="categoryId" autofocus>
                                                 <?php foreach ($categories as $category): ?>
                                                     <option value="<?= $category['Id'] ?>"><?= $category['Name'] ?>
                                                     </option>
@@ -95,6 +95,8 @@ include pathOf('includes/script.php');
                     console.log(response);
                     if (response.success !== true)
                         return;
+
+                    window.location.href = './index'
                 }
             })
     }

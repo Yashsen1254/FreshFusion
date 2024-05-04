@@ -2,7 +2,7 @@
 require ('../../includes/init.php');
 $categories = select("SELECT * FROM Categories");
 $Id = $_POST["Id"];
-$products = selectOne("SELECT * FROM products WHERE Id = $Id");
+$products = selectOne("SELECT * FROM Products WHERE Id = $Id");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -26,9 +26,11 @@ include pathOf('includes/navbar.php');
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Categorie</label>
                                         <div class="col-md-10">
-                                            <select class="form-select" id="categoryId">
+                                            <select class="form-select" id="categoryId" autofocus>
                                                 <?php foreach ($categories as $category): ?>
-                                                    <option value="<?= $category['Id'] ?>"><?= $category['Name'] ?>
+                                                    <option value="<?= $category['Id'] ?>"
+                                                        <?= $products['CategoryId'] == $category['Id'] ? 'selected' : '' ?>>
+                                                        <?= $category['Name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -67,7 +69,8 @@ include pathOf('includes/navbar.php');
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success mb-2 me-2" onclick="updateData()">Update</button>
+                            <button class="btn btn-success mb-2 me-2" type="button"
+                                onclick="updateData()">Update</button>
                         </div>
                     </div>
                 </div>
@@ -85,27 +88,27 @@ include pathOf('includes/script.php');
 ?>
 <script>
     function updateData() {
-        
-        var form = new FormData();
-            form.append('Id', $('#Id').val());
-            form.append('categoryId', $('#categoryId').val());
-            form.append('Name', $('#Name').val());
-            form.append('Details', $('#Details').val());
-            form.append('Price', $('#Price').val());
-            form.append('Image', $('#Image')[0].files[0]);
 
-            $.ajax({
-                url: '../../api/product/update.php',
-                method: 'POST',
-                data: form,
-                processData: false,
-                contentType: false,
-                success: function(response) {
-                    console.log(response);
-                    if (response.success !== true)
-                        return;
-                }
-            })
+        var form = new FormData();
+        form.append('Id', $('#Id').val());
+        form.append('categoryId', $('#categoryId').val());
+        form.append('Name', $('#Name').val());
+        form.append('Details', $('#Details').val());
+        form.append('Price', $('#Price').val());
+        form.append('Image', $('#Image')[0].files[0]);
+        
+        $.ajax({
+            url: '../../api/product/update.php',
+            method: 'POST',
+            data: form,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+                if (response.success !== true)
+                    return;
+            }
+        })
     }
 </script>
 <?php
