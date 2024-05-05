@@ -144,7 +144,8 @@ INSERT INTO
         `Name`,
         `Mobile`,
         `Email`,
-        `Address`
+        `Address`,
+        `Password`
     )
 VALUES
     (
@@ -154,6 +155,7 @@ VALUES
         '7894561234',
         'Testing@gmail.com',
         'This is the testing address'
+        `Admin`
     );
 
 INSERT INTO
