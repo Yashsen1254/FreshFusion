@@ -1,7 +1,7 @@
 <?php
 require ('../../includes/init.php');
 $permissions = authenticate('Users',1);
-$users = select("SELECT Users.Id, Users.Name, Users.Mobile, Users.Email, Users.Address, Roles.Name AS 'RolesName', BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Users INNER JOIN Roles ON Users.RoleId = Roles.Id INNER JOIN BranchDetails ON Users.BranchId = BranchDetails.Id");
+$users = select("SELECT Users.Id, Users.Name, Users.Mobile, Users.Email, Users.Password, Roles.Name AS 'RolesName', BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Users INNER JOIN Roles ON Users.RoleId = Roles.Id INNER JOIN BranchDetails ON Users.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -35,12 +35,9 @@ include pathOf('includes/navbar.php');
                                     <thead>
                                         <tr>
                                             <th>Sr No.</th>
-                                            <th>Role</th>
-                                            <th>Branch</th>
+                                            <th>OwnerName</th>
                                             <th>Name</th>
                                             <th>Mobile</th>
-                                            <th>Email</th>
-                                            <th>Address</th>
                                             <th>Password</th>
                                             <th>Permission</th>
                                             <th>Modify</th>
@@ -52,12 +49,9 @@ include pathOf('includes/navbar.php');
                                     <?php foreach ($users as $user): ?>
                                             <tr>
                                                 <td><?= $index += 1 ?></td>
-                                                <td><?= $user['RolesName'] ?></td>
                                                 <td><?= $user['BranchDetailsOwnerName'] ?></td>
                                                 <td><?= $user['Name'] ?></td>
                                                 <td><?= $user['Mobile'] ?></td>
-                                                <td><?= $user['Email'] ?></td>
-                                                <td><?= $user['Address'] ?></td>
                                                 <td><?= $user['Password'] ?></td>
                                                 <form action="./permission" method="post">
                                                     <td>

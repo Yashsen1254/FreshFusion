@@ -30,7 +30,7 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="roleId" autofocus>
                                                 <?php foreach ($roles as $role): ?>
-                                                    <option value="<?= $role['Id'] ?>"><?= $role['Id'] ?>
+                                                    <option value="<?= $role['Id'] ?>"><?= $role['Name'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -99,12 +99,12 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/user/add.php",
+            url: "../../api/user/add",
             method: "POST",
             data: data,
             success: function (response) {
                 alert("Users Added");
-                window.location.href = './index.php';
+                window.location.href = './index';
             }
         })
     }
