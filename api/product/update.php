@@ -21,4 +21,6 @@ if ($result)
     echo json_encode(["success" => true]);
 else
     echo json_encode(["success" => false]);
+
+    header('Location: ../../pages/product/index');
 ?>
