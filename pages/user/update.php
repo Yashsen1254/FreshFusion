@@ -1,5 +1,9 @@
 <?php
 require ('../../includes/init.php');
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Users', $UserId);
+if ($usersPermission['EditPermission'] != 1)
+    header("Location:./index");
 $roles = select("SELECT * FROM roles");
 $branchDetails = select("SELECT * FROM BranchDetails");
 $Id = $_POST["Id"];

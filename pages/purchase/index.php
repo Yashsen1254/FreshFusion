@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Purchase',1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Purchase', $UserId);
 $purchases = select("SELECT Purchase.Id, Purchase.Quantity, BranchDetails.OwnerName AS 'BranchDetailsOwnerName', Products.Name AS 'ProductName' FROM Purchase INNER JOIN BranchDetails ON Purchase.BranchId = BranchDetails.Id INNER JOIN Products ON Purchase.ProductId = Products.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -18,10 +19,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Purchase</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <?php if($permissions['AddPermission'] == 1) { ?>
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
-                                                    <?php } ?>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php } ?>
                                         </ol>
                                     </div>
                                 </div>
@@ -38,36 +39,49 @@ include pathOf('includes/navbar.php');
                                             <th>Branch</th>
                                             <th>Product</th>
                                             <th>Quantity</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        <?php foreach ($purchases as $purchase): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $purchase['BranchDetailsOwnerName'] ?></td>
-                                                <td><?= $purchase['ProductName'] ?></td>
-                                                <td><?= $purchase['Quantity'] ?></td>
-                                                <form action="./update" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $purchase['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deletePurchase(<?= $purchase['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+
+                                            foreach ($purchases as $purchase): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $purchase['BranchDetailsOwnerName'] ?></td>
+                                                    <td><?= $purchase['ProductName'] ?></td>
+                                                    <td><?= $purchase['Quantity'] ?></td>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
+
+                                                        <form action="./update" method="post">
+                                                            <td>
+                                                                <input type="hidden" name="Id" id="Id"
+                                                                    value="<?= $purchase['Id'] ?>">
+                                                                <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                    <?php } ?>
+                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
+
+                                                        <td>
+                                                            <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                                onclick="deletePurchase(<?= $purchase['Id'] ?>)">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                        </td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 

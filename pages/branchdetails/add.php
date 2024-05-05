@@ -1,7 +1,8 @@
 <?php
 require ('../../includes/init.php');
 
-$permissions = authenticate('BranchDetails', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('BranchDetails', $UserId);
 if ($permissions['AddPermission'] != 1)
     header('Location: ./index');
 

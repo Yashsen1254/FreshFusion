@@ -1,5 +1,9 @@
 <?php
 require ('../../includes/init.php');
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Sales', $UserId);
+if ($salesPermission['EditPermission'] != 1)
+    header("Location:./index");
 $branchDetails = select("SELECT * FROM BranchDetails");
 $products = select("SELECT * FROM Products");
 $Id = $_POST["Id"];

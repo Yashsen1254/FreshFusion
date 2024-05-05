@@ -1,5 +1,9 @@
 <?php
 require ('../../includes/init.php');
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Roles', $UserId);
+if ($rolesPermission['EditPermission'] != 1)
+    header("Location:./index");
 $Id = $_POST["Id"];
 $roles = selectOne("SELECT * FROM roles WHERE Id = $Id");
 include pathOf('includes/header.php');

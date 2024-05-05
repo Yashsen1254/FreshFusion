@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Products', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Products', $UserId);
 $products = select("SELECT Products.Id, Products.Name, Products.Details, Products.Price, Products.ImageFileName, Categories.Name AS 'CategoryName' FROM Products INNER JOIN Categories ON Products.CategoryId = Categories.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -28,44 +29,48 @@ include pathOf('includes/navbar.php');
                             </div>
                         </div>
                     </div>
-                    <?php foreach ($products as $product): ?>
-                        <div class="col-sm-6 col-lg-3">
-                            <div class="card">
-                                <div class="card-body p-lg-4">
-                                    <!-- Single Card -->
-                                    <div class="single-product-card">
-                                        <div class="single-product-img">
-                                            <img src="<?= urlOf('assets/img/uploads/') . $product['ImageFileName'] ?>"
-                                                id="Image" alt="" class="imagedisplay">
-                                        </div>
-                                        <div class="single-product-meta">
-                                            <a class="product-title"><?= $product['Name'] ?></a>
-                                            <ul class="product-det-info">
-                                                <li><i class="fa fa-circle"></i>
-                                                    <?= $product['CategoryName'] ?>
-                                                </li>
-                                                <li><i class="fa fa-circle"></i>
-                                                    <?= $product['Details'] ?></li>
-                                            </ul>
-                                            <div class="d-flex justify-content-between align-items-center mt-4">
-                                                <h4 class="product-price"><?= $product['Price'] ?></h4>
-                                                <form action="./update" method="post">
-                                                    <input type="hidden" name="Id" id="Id" value="<?= $product['Id'] ?>">
-                                                    <button type="submit" class="btn btn-primary btn-circle mb-2">
-                                                        <i class="fa fa-edit"></i>
+
+                    <?php if ($permissions['ViewPermission'] == 1) { 
+                        foreach ($products as $product): ?>
+                            <div class="col-sm-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body p-lg-4">
+                                        <!-- Single Card -->
+                                        <div class="single-product-card">
+                                            <div class="single-product-img">
+                                                <img src="<?= urlOf('assets/img/uploads/') . $product['ImageFileName'] ?>"
+                                                    id="Image" alt="" class="imagedisplay">
+                                            </div>
+                                            <div class="single-product-meta">
+                                                <a class="product-title"><?= $product['Name'] ?></a>
+                                                <ul class="product-det-info">
+                                                    <li><i class="fa fa-circle"></i>
+                                                        <?= $product['CategoryName'] ?>
+                                                    </li>
+                                                    <li><i class="fa fa-circle"></i>
+                                                        <?= $product['Details'] ?></li>
+                                                </ul>
+                                                <div class="d-flex justify-content-between align-items-center mt-4">
+                                                    <h4 class="product-price"><?= $product['Price'] ?></h4>
+                                                    <form action="./update" method="post">
+                                                        <input type="hidden" name="Id" id="Id" value="<?= $product['Id'] ?>">
+                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                            <i class="fa fa-edit"></i>
+                                                        </button>
+                                                    </form>
+                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                        onclick="deleteProducts(<?= $product['Id'] ?>)">
+                                                        <i class="fa fa-trash"></i>
                                                     </button>
-                                                </form>
-                                                <button type="button" class="btn btn-danger btn-circle mb-2"
-                                                    onclick="deleteProducts(<?= $product['Id'] ?>)">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach;
+                    }
+                    ?>
                 </div>
             </div>
         </div>

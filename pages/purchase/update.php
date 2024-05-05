@@ -1,5 +1,11 @@
 <?php
 require ('../../includes/init.php');
+
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Purchase', $UserId);
+if ($purchasePermission['EditPermission'] != 1)
+    header("Location:./index");
+
 $branchDetails = select("SELECT * FROM BranchDetails");
 $products = select("SELECT * FROM Products");
 $Id = $_POST["Id"];

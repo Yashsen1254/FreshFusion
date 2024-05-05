@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Stocks', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Stocks', $UserId);
 $stocks = select("SELECT Stocks.Id, Stocks.CurrentQuantity, BranchDetails.OwnerName AS 'BranchDetailsOwnerName', Products.Name AS 'ProductName' FROM Stocks INNER JOIN BranchDetails ON Stocks.BranchId = BranchDetails.Id INNER JOIN Products ON Stocks.ProductId = Products.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -18,10 +19,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Stock</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <?php if($permissions['AddPermission'] == 1) { ?>
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
-                                                    <?php } ?>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php } ?>
                                         </ol>
                                     </div>
                                 </div>
@@ -38,36 +39,48 @@ include pathOf('includes/navbar.php');
                                             <th>Branch</th>
                                             <th>Product</th>
                                             <th>CurrentQuantity</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                    <?php foreach ($stocks as $stock): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $stock['BranchDetailsOwnerName'] ?></td>
-                                                <td><?= $stock['ProductName'] ?></td>
-                                                <td><?= $stock['CurrentQuantity'] ?></td>
-                                                <form action="./update" method="post">
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+
+                                            foreach ($stocks as $stock): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $stock['BranchDetailsOwnerName'] ?></td>
+                                                    <td><?= $stock['ProductName'] ?></td>
+                                                    <td><?= $stock['CurrentQuantity'] ?></td>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                    
+                                                    <form action="./update" method="post">
+                                                        <td>
+                                                            <input type="hidden" name="Id" id="Id" value="<?= $stock['Id'] ?>">
+                                                            <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                        </td>
+                                                    </form>
+                                                    <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+
                                                     <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $stock['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                        <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                            onclick="deleteStocks(<?= $stock['Id'] ?>)">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                     </td>
-                                                </form>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteStocks(<?= $stock['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 

@@ -1,5 +1,11 @@
 <?php
 require ('../../includes/init.php');
+
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('City', $UserId);
+if ($Permission['EditPermission'] != 1)
+    header("Location:./index");
+
 $Id = $_POST["Id"];
 $cities = selectOne("SELECT * FROM city WHERE Id = $Id");
 include pathOf('includes/header.php');

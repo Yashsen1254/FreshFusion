@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Expenses', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Expenses', $UserId);
 $expenses = select("SELECT Expenses.Id, Expenses.Name, Expenses.Amount, BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Expenses INNER JOIN BranchDetails ON Expenses.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -38,36 +39,49 @@ include pathOf('includes/navbar.php');
                                             <th>Branch</th>
                                             <th>Name</th>
                                             <th>Amount</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        <?php foreach ($expenses as $expense): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $expense['BranchDetailsOwnerName'] ?></td>
-                                                <td><?= $expense['Name'] ?></td>
-                                                <td><?= $expense['Amount'] ?></td>
-                                                <form action="./update" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $expense['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteExpense(<?= $expense['Id'] ?>)">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+
+                                            foreach ($expenses as $expense): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $expense['BranchDetailsOwnerName'] ?></td>
+                                                    <td><?= $expense['Name'] ?></td>
+                                                    <td><?= $expense['Amount'] ?></td>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
+
+                                                        <form action="./update" method="post">
+                                                            <td>
+                                                                <input type="hidden" name="Id" id="Id"
+                                                                    value="<?= $expense['Id'] ?>">
+                                                                <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                    <?php } ?>
+                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
+
+                                                        <td>
+                                                            <button type="button" class="btn btn-danger btn-circle mb-2"
+                                                                onclick="deleteExpense(<?= $expense['Id'] ?>)">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
+                                                        </td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 

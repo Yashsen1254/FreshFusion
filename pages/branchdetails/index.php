@@ -1,7 +1,8 @@
 <?php
 require ('../../includes/init.php');
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('BranchDetails', $UserId);
 $branchDetails = select("SELECT BranchDetails.Id, BranchDetails.Address, BranchDetails.Squarefeet, BranchDetails.OwnerName, City.Name FROM BranchDetails INNER JOIN City ON BranchDetails.CityId = City.Id");
-$permissions = authenticate('BranchDetails', 1);
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -40,37 +41,47 @@ include pathOf('includes/navbar.php');
                                             <th>Address</th>
                                             <th>Squarefeet</th>
                                             <th>OwnerName</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        <?php foreach ($branchDetails as $branchDetail): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $branchDetail['Name'] ?></td>
-                                                <td><?= $branchDetail['Address'] ?></td>
-                                                <td><?= $branchDetail['Squarefeet'] ?></td>
-                                                <td><?= $branchDetail['OwnerName'] ?></td>
-                                                <form action="./update" method="post">
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+                                            foreach ($branchDetails as $branchDetail): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $branchDetail['Name'] ?></td>
+                                                    <td><?= $branchDetail['Address'] ?></td>
+                                                    <td><?= $branchDetail['Squarefeet'] ?></td>
+                                                    <td><?= $branchDetail['OwnerName'] ?></td>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                    <form action="./update" method="post">
+                                                        <td>
+                                                            <input type="hidden" name="Id" id="Id"
+                                                                value="<?= $branchDetail['Id'] ?>">
+                                                            <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                        </td>
+                                                    </form>
+                                                    <?php } ?>
+                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
                                                     <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $branchDetail['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                        <button type="submit" class="btn btn-danger btn-circle mb-2"
+                                                            onclick="deleteBranch(<?= $branchDetail['Id'] ?>)">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                     </td>
-                                                </form>
-                                                <td>
-                                                    <button type="submit" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteBranch(<?= $branchDetail['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div> <!-- end card body-->

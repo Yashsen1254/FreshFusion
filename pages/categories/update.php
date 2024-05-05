@@ -1,5 +1,11 @@
 <?php
 require ('../../includes/init.php');
+
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Catgories', $UserId);
+if ($permission['EditPermission'] != 1)
+    header("Location:./index");
+
 $Id = $_POST["Id"];
 $querry = "SELECT * FROM categories WHERE Id = $Id";
 $categories = selectOne($querry);

@@ -1,7 +1,8 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Categories', 1);
-$categories = select("SELECT * FROM categories");
+$categories = select("SELECT * FROM Categories");
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Categories', $UserId);
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
@@ -37,34 +38,44 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Name</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        <?php foreach ($categories as $category): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $category['Name'] ?></td>
-                                                <form action="./update" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $category['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <td>
-                                                    <button type="submit" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteCategory(<?= $category['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+                                            foreach ($categories as $category): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $category['Name'] ?></td>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                        <form action="./update" method="post">
+                                                            <td>
+                                                                <input type="hidden" name="Id" id="Id"
+                                                                    value="<?= $category['Id'] ?>">
+                                                                <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                    <?php } ?>
+                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                        <td>
+                                                            <button type="submit" class="btn btn-danger btn-circle mb-2"
+                                                                onclick="deleteCategory(<?= $category['Id'] ?>)">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                        </td>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 

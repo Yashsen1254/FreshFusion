@@ -1,7 +1,8 @@
 <?php
 require ('../../includes/init.php');
 
-$permissions = authenticate('Purchase', 1);
+$UserId = $_SESSION['$UserId'];
+$permissions = authenticate('Purchase', $UserId);
 if ($permissions['AddPermission'] != 1)
     header('Location: ./index');
 

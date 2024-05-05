@@ -1,5 +1,11 @@
 <?php
 require ('../../includes/init.php');
+
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Products', $UserId);
+if ($productPermission['EditPermission'] != 1)
+    header("Location:./index");
+
 $categories = select("SELECT * FROM Categories");
 $Id = $_POST["Id"];
 $products = selectOne("SELECT * FROM Products WHERE Id = $Id");

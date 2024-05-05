@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Sales',1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Sales',$UserId);
 if($permissions['AddPermission'] != 1)
     header('Location: ./index');
 $branchDetails = select("SELECT * FROM branchdetails");

@@ -1,5 +1,9 @@
 <?php
 require ('../../includes/init.php');
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Stocks', $UserId);
+if ($stocksPermission['EditPermission'] != 1)
+    header("Location:./index");
 $Id = $_POST["Id"];
 $stocks = selectOne("SELECT * FROM stocks WHERE Id = $Id");
 $branchDetails = select("SELECT * FROM BranchDetails");

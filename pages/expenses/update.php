@@ -1,5 +1,11 @@
 <?php
 require ('../../includes/init.php');
+
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Expenses', $UserId);
+if ($expensesPermission['EditPermission'] != 1)
+    header("Location:./index");
+
 $branchDetails = select("SELECT * FROM BranchDetails");
 $Id = $_POST["Id"];
 $expanses = selectOne("SELECT * FROM expenses WHERE Id = $Id");

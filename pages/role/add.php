@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Roles', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Roles', $UserId);
 if($permissions['AddPermission'] != 1)
     header('Location: ./index');
 include pathOf('includes/header.php');

@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('Users',1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('Users', $UserId);
 $users = select("SELECT Users.Id, Users.Name, Users.Mobile, Users.Email, Users.Password, Roles.Name AS 'RolesName', BranchDetails.OwnerName AS 'BranchDetailsOwnerName' FROM Users INNER JOIN Roles ON Users.RoleId = Roles.Id INNER JOIN BranchDetails ON Users.BranchId = BranchDetails.Id");
 $index = 0;
 include pathOf('includes/header.php');
@@ -18,10 +19,10 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">User</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <?php if($permissions['AddPermission'] == 1) { ?>
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
-                                                    <?php } ?>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php } ?>
                                         </ol>
                                     </div>
                                 </div>
@@ -39,40 +40,51 @@ include pathOf('includes/navbar.php');
                                             <th>Name</th>
                                             <th>Mobile</th>
                                             <th>Password</th>
-                                            <th>Permission</th>
-                                            <th>Modify</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                    <?php foreach ($users as $user): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $user['BranchDetailsOwnerName'] ?></td>
-                                                <td><?= $user['Name'] ?></td>
-                                                <td><?= $user['Mobile'] ?></td>
-                                                <td><?= $user['Password'] ?></td>
-                                                <form action="./permission" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $user['Id'] ?>">
-                                                        <button type="submit" class="btn btn-success btn-circle mb-2">
-                                                            <i class="fa fa-lock"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                                <form action="./update" method="post">
-                                                    <td>
-                                                        <input type="hidden" name="Id" id="Id"
-                                                            value="<?= $user['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                    </td>
-                                                </form>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+
+                                            foreach ($users as $user): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $user['BranchDetailsOwnerName'] ?></td>
+                                                    <td><?= $user['Name'] ?></td>
+                                                    <td><?= $user['Mobile'] ?></td>
+                                                    <td><?= $user['Password'] ?></td>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
+
+                                                        <form action="./permission" method="post">
+                                                            <td>
+                                                                <input type="hidden" name="Id" id="Id" value="<?= $user['Id'] ?>">
+                                                                <button type="submit" class="btn btn-success btn-circle mb-2">
+                                                                    <i class="fa fa-lock"></i>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                    <?php } ?>
+                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
+
+                                                        <form action="./update" method="post">
+                                                            <td>
+                                                                <input type="hidden" name="Id" id="Id" value="<?= $user['Id'] ?>">
+                                                                <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                            </td>
+                                                        </form>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 

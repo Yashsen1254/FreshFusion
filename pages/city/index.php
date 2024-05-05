@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
-$permissions = authenticate('City', 1);
+$UserId = $_SESSION['UserId'];
+$permissions = authenticate('City', $UserId);
 $cities = select("SELECT * FROM City");
 $index = 0;
 include pathOf('includes/header.php');
@@ -19,9 +20,9 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">City</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <?php if($permissions['AddPermission'] == 1) { ?>
-                                            <li class="breadcrumb-item active"> <a href="./add"
-                                                    class="btn btn-success mb-2 me-2">Add</a> </li>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
+                                                <li class="breadcrumb-item active"> <a href="./add"
+                                                        class="btn btn-success mb-2 me-2">Add</a> </li>
                                             <?php } ?>
                                         </ol>
                                     </div>
@@ -37,33 +38,46 @@ include pathOf('includes/navbar.php');
                                         <tr>
                                             <th>Sr No.</th>
                                             <th>Name</th>
-                                            <th>Modify</th>
-                                            <th>Delete</th>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+                                                <th>Modify</th>
+                                            <?php } ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                <th>Delete</th>
+                                            <?php } ?>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        <?php foreach ($cities as $city): ?>
-                                            <tr>
-                                                <td><?= $index += 1 ?></td>
-                                                <td><?= $city['Name'] ?></td>
-                                                <form action="./update" method="post">
+                                        <?php if ($permissions['ViewPermission'] == 1) {
+
+                                            foreach ($cities as $city): ?>
+                                                <tr>
+                                                    <td><?= $index += 1 ?></td>
+                                                    <td><?= $city['Name'] ?></td>
+                                            <?php if ($permissions['EditPermission'] == 1) { ?>
+
+                                                    <form action="./update" method="post">
+                                                        <td>
+                                                            <input type="hidden" name="Id" id="Id" value="<?= $city['Id'] ?>">
+                                                            <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                                <i class="fa fa-edit"></i>
+                                                            </button>
+                                                        </td>
+                                                    </form>
+                                                    <?php }  ?>
+                                            <?php if ($permissions['DeletePermission'] == 1) { ?>
+
                                                     <td>
-                                                        <input type="hidden" name="Id" id="Id" value="<?= $city['Id'] ?>">
-                                                        <button type="submit" class="btn btn-primary btn-circle mb-2">
+                                                        <button type="submit" class="btn btn-danger btn-circle mb-2"
+                                                            onclick="deleteCity(<?= $city['Id'] ?>)">
                                                             <i class="fa fa-edit"></i>
                                                         </button>
                                                     </td>
-                                                </form>
-                                                <td>
-                                                    <button type="submit" class="btn btn-danger btn-circle mb-2"
-                                                        onclick="deleteCity(<?= $city['Id'] ?>)">
-                                                        <i class="fa fa-edit"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; ?>
+                                                    <?php } ?>
+                                                </tr>
+                                            <?php endforeach;
+                                        } ?>
                                     </tbody>
                                 </table>
 
@@ -88,7 +102,7 @@ include pathOf('includes/navbar.php');
                 data: {
                     Id: Id
                 },
-                
+
                 success: function (response) {
                     console.log(response);
                     if (response.success != true)
