@@ -19,7 +19,7 @@ include pathOf('includes/navbar.php');
                                     <h4 class="mb-0">Branch Details</h4>
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                        <?php if ($permissions['AddPermission'] == 1) { ?>
+                                            <?php if ($permissions['AddPermission'] == 1) { ?>
                                                 <li class="breadcrumb-item active"> <a href="./add"
                                                         class="btn btn-success mb-2 me-2">Add</a> </li>
                                             <?php } ?>
@@ -96,7 +96,11 @@ include pathOf('includes/navbar.php');
                     Id: Id
                 },
                 success: function (response) {
-                    alert('BranchDetails Deleted');
+                    console.log(response);
+                    if (response.success != true)
+                        return alert('BranchDetails Deleted');
+
+                    window.location.href = './index';
                 }
             })
         }

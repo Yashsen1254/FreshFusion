@@ -29,7 +29,9 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                         <select class="form-select" id="branchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"
+                                                    <?= $sales['BranchId'] == $branchDetail['Id'] ? 'selected' : '' ?>>
+                                                    <?= $branchDetail['OwnerName'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -41,7 +43,9 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                         <select class="form-select" id="productId">
                                                 <?php foreach ($products as $product): ?>
-                                                    <option value="<?= $product['Id'] ?>"><?= $product['Name'] ?></option>
+                                                    <option value="<?= $product['Id'] ?>"
+                                                    <?= $sales['ProductId'] == $product['Id'] ? 'selected' : '' ?>>
+                                                    <?= $product['Name'] ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>

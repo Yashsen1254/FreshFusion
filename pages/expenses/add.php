@@ -29,7 +29,7 @@ include pathOf('includes/navbar.php');
                                         <div class="col-md-10">
                                             <select class="form-select" id="BranchId" autofocus>
                                                 <?php foreach ($branchDetails as $branchDetail): ?>
-                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['Id'] ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>

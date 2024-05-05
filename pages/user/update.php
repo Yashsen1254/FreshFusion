@@ -1,6 +1,7 @@
 <?php
 require ('../../includes/init.php');
 $roles = select("SELECT * FROM roles");
+$branchDetails = select("SELECT * FROM BranchDetails");
 $Id = $_POST["Id"];
 $users = selectOne("SELECT * FROM users WHERE Id = $Id");
 include pathOf('includes/header.php');
@@ -24,11 +25,23 @@ include pathOf('includes/navbar.php');
                                     <input class="form-control" type="hidden" id="Id" name="Id"
                                         value="<?= $users['Id'] ?>">
                                     <div class="row mb-3">
+                                        <label class="col-md-2 col-form-label">Select Branch</label>
+                                        <div class="col-md-10">
+                                            <select class="form-select" id="branchId" autofocus>
+                                                <?php foreach ($branchDetails as $branchDetail): ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>">
+                                                        <?= $branchDetail['OwnerName'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Role</label>
                                         <div class="col-md-10">
                                             <select class="form-select" id="roleId" autofocus>
-                                                <?php foreach ($users as $user): ?>
-                                                    <option value="<?= $user['Id'] ?>"><?= $user['Id'] ?>
+                                                <?php foreach ($roles as $role): ?>
+                                                    <option value="<?= $role['Id'] ?>"><?= $role['Id'] ?>
                                                     </option>
                                                 <?php endforeach; ?>
                                             </select>
@@ -66,10 +79,11 @@ include pathOf('includes/navbar.php');
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
+                                        <label for="example-password-input"
+                                            class="col-md-2 col-form-label">Password</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="password" value="<?= $user['Password'] ?>"
-                                            id="Password">
+                                                id="Password">
                                         </div>
                                     </div>
                                 </div>

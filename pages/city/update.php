@@ -32,7 +32,7 @@ include pathOf('includes/navbar.php');
                                 </div>
                             </div>
                             <button class="btn btn-success mb-2 me-2" onclick="updateData()"
-                                type="submit">Update</button>
+                                >Update</button>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <?php
 require ('../../includes/init.php');
 $permissions = authenticate('Stocks', 1);
-$stocks = select("SELECT Stocks.Id, Stocks.CurrentQuantity, BranchDetails.OwnerName AS 'BranchDetailsName', Products.Name AS 'ProductName' FROM Stocks INNER JOIN BranchDetails ON Stocks.BranchId = BranchDetails.Id INNER JOIN Products ON Stocks.ProductId = Products.Id");
+$stocks = select("SELECT Stocks.Id, Stocks.CurrentQuantity, BranchDetails.OwnerName AS 'BranchDetailsOwnerName', Products.Name AS 'ProductName' FROM Stocks INNER JOIN BranchDetails ON Stocks.BranchId = BranchDetails.Id INNER JOIN Products ON Stocks.ProductId = Products.Id");
 $index = 0;
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');

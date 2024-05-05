@@ -90,7 +90,11 @@ include pathOf('includes/navbar.php');
                     Id: Id
                 },
                 success: function (response) {
-                    alert('Category Deleted');
+                    console.log(response);
+                    if (response.success != true)
+                        return alert('Category Deleted');
+
+                    window.location.href = './index';
                 }
             })
         }

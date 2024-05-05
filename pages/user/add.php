@@ -6,6 +6,7 @@ if ($permissions['AddPermission'] != 1)
     header('Location: ./index');
 
 $roles = select("SELECT * FROM Roles");
+$branchDetails = select("SELECT * FROM BranchDetails");
 include pathOf('includes/header.php');
 include pathOf('includes/navbar.php');
 ?>
@@ -24,7 +25,17 @@ include pathOf('includes/navbar.php');
 
                             <div class="row">
                                 <div class="col-xl-6">
-
+                                    <div class="row mb-3">
+                                        <label class="col-md-2 col-form-label">Select Branch</label>
+                                        <div class="col-md-10">
+                                            <select class="form-select" id="branchId" autofocus>
+                                                <?php foreach ($branchDetails as $branchDetail): ?>
+                                                    <option value="<?= $branchDetail['Id'] ?>"><?= $branchDetail['OwnerName'] ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label class="col-md-2 col-form-label">Select Role</label>
                                         <div class="col-md-10">
@@ -64,7 +75,8 @@ include pathOf('includes/navbar.php');
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label for="example-password-input" class="col-md-2 col-form-label">Password</label>
+                                        <label for="example-password-input"
+                                            class="col-md-2 col-form-label">Password</label>
                                         <div class="col-md-10">
                                             <input class="form-control" type="password" id="Password">
                                         </div>
@@ -90,6 +102,7 @@ include pathOf('includes/script.php');
 <script>
     function sendData() {
         let data = {
+            branchId: $("#branchId").val(),
             roleId: $("#roleId").val(),
             Name: $("#Name").val(),
             Mobile: $("#Mobile").val(),
@@ -99,7 +112,7 @@ include pathOf('includes/script.php');
         }
 
         $.ajax({
-            url: "../../api/user/add",
+            url: "../../api/user/add.php",
             method: "POST",
             data: data,
             success: function (response) {

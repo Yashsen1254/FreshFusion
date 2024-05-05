@@ -88,8 +88,13 @@ include pathOf('includes/navbar.php');
                 data: {
                     Id: Id
                 },
+                
                 success: function (response) {
-                    alert('City Deleted');
+                    console.log(response);
+                    if (response.success != true)
+                        return alert('City Deleted');
+
+                    window.location.href = './index';
                 }
             })
         }
