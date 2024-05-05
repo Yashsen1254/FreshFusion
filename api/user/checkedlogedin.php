@@ -6,7 +6,7 @@ header("Content-type:application/json");
 $name = $_POST['Name'];
 $password = $_POST['Password'];
 
-$query = "INSERT INTO Users (name,Password) VALUES(?,?)";
+$query = "INSERT INTO Users (Name,Password) VALUES(?,?)";
 $params = [$name, $password];
 $result = execute($query, $params);
 
