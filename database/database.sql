@@ -154,8 +154,8 @@ VALUES
         'OwnerName',
         '7894561234',
         'Testing@gmail.com',
-        'This is the testing address'
-        `Admin`
+        'This is the testing address',
+        'xyz'
     );
 
 INSERT INTO
