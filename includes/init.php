@@ -40,7 +40,7 @@ function select($query, $params = null)
 {
     global $connection;
 
-    $statement = $connection->prepare($query); 
+    $statement = $connection->prepare($query);
     $statement->execute($params);
 
     $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -57,6 +57,16 @@ function getLastError()
 {
     global $connection;
     return $connection->errorInfo();
+}
+
+function authenticate($moduleName, $userId)
+{
+    global $connection;
+    $statement = $connection->prepare("SELECT permissions.AddPermission, permissions.EditPermission, permissions.DeletePermission, permissions.ViewPermission FROM permissions INNER JOIN users ON users.Id = permissions.UserId INNER JOIN modules ON modules.Id = permissions.ModuleId WHERE modules.Name = ? AND users.Id = ?");
+    $statement->execute([$moduleName, $userId]);
+
+    $rows = $statement->fetch(PDO::FETCH_ASSOC);
+    return $rows;
 }
 
 session_start();
