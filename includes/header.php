@@ -17,8 +17,8 @@ if (!isset($_SESSION['LoggedIn'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Fojota - Admin Dashboard Template</title>
-    <link rel="icon" href="<?= urlOf('assets/img/core-img/favicon.ico'); ?>">
+    <title>FreshFusion</title>
+    <link rel="icon" href="<?= urlOf('assets/img/core-img/small-logo.png'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/classynav.css'); ?>">
     <link rel="stylesheet" href="<?= urlOf('assets/css/animate.css'); ?>">
