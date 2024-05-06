@@ -2,7 +2,7 @@
 require ('../../includes/init.php');
 
 $UserId = $_SESSION['UserId'];
-$permissions = authenticate('Catgories', $UserId);
+$permissions = authenticate('Categories', $UserId);
 if ($permission['EditPermission'] != 1)
     header("Location:./index");
 

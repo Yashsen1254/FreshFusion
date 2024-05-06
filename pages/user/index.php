@@ -41,10 +41,10 @@ include pathOf('includes/navbar.php');
                                             <th>Mobile</th>
                                             <th>Password</th>
                                             <?php if ($permissions['EditPermission'] == 1) { ?>
-                                                <th>Modify</th>
+                                                <th>Permission</th>
                                             <?php } ?>
                                             <?php if ($permissions['DeletePermission'] == 1) { ?>
-                                                <th>Delete</th>
+                                                <th>Modify</th>
                                             <?php } ?>
                                         </tr>
                                     </thead>
@@ -61,7 +61,6 @@ include pathOf('includes/navbar.php');
                                                     <td><?= $user['Mobile'] ?></td>
                                                     <td><?= $user['Password'] ?></td>
                                                     <?php if ($permissions['EditPermission'] == 1) { ?>
-
                                                         <form action="./permission" method="post">
                                                             <td>
                                                                 <input type="hidden" name="Id" id="Id" value="<?= $user['Id'] ?>">
@@ -71,7 +70,7 @@ include pathOf('includes/navbar.php');
                                                             </td>
                                                         </form>
                                                     <?php } ?>
-                                                    <?php if ($permissions['DeletePermission'] == 1) { ?>
+                                                    <?php if ($permissions['EditPermission'] == 1) { ?>
 
                                                         <form action="./update" method="post">
                                                             <td>

@@ -2,7 +2,7 @@
 require ('../../includes/init.php');
 
 $UserId = $_SESSION['UserId'];
-$permissions = authenticate('Users', 1);
+$permissions = authenticate('Users', $UserId);
 if ($permissions['AddPermission'] != 1)
     header('Location: ./index');
 
