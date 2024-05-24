@@ -2,6 +2,10 @@
 
 FreshFusion is a robust restaurant management system designed to streamline operations and enhance efficiency in managing various aspects of a restaurant business. This README file provides an overview of the database structure and tables used in the FreshFusion project.
 
+# Output
+
+![screenshot](https://github.com/Yashsen1254/FreshFusion/assets/155702507/66e176b4-0867-42eb-a584-5d1ad8eaf17e)
+
 ## Database Schema
 
 The FreshFusion database consists of several tables meticulously crafted to organize data efficiently:
